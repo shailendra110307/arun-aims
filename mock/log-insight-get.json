@@ -1,0 +1,63 @@
+[
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+},
+{
+"host": "mitaka",
+"message": "2017-3-9 07:03:24.015 8945 INFO heat.engine.service [req-264f5dc6-dfa4-4b99-a6b6-e3536db8a16c - - - - -] Service 7a0f38bb-987f-474b-adda-76a61166c099 is updated",
+"source": "/var/log/heat/heat-engine.log",
+"timestamp": "2017-3-9T12:03:29.995Z"
+}
+]
+ 

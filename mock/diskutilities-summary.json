@@ -1,0 +1,34 @@
+{
+  "diskutilities": [
+    {
+      "Name":"Disk1",
+      "Total_Disk_Size": "2000",
+      "Disk_In_use": "200",
+      "Max_Usage": "90"
+    },
+    {
+       "Name":"Disk2",
+      "Total_Disk_Size": "1000",
+      "Disk_In_use": "1000",
+      "Max_Usage": "0"
+    },
+    {
+       "Name":"Disk3",
+      "Total_Disk_Size": "4000",
+      "Disk_In_use": "200",
+      "Max_Usage": "95"
+    },
+    {
+       "Name":"Disk4",
+      "Total_Disk_Size": "2000",
+      "Disk_In_use": "20",
+      "Max_Usage": "99"
+    },
+    {
+       "Name":"Disk5",
+      "Total_Disk_Size": "1000",
+      "Disk_In_use": "200",
+      "Max_Usage": "80"
+    }
+  ]
+}

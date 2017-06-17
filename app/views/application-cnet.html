@@ -1,0 +1,464 @@
+<div class="container-fluid" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+        <li role="presentation" [ngClass]="{'active': currentTab === 'dashboard'}"><a (click)="changeTab('dashboard')">Dashboard</a>
+        </li>
+        <li role="presentation" [ngClass]="{'active': currentTab === 'operations'}"><a (click)="changeTab('operations')">Operations</a>
+        </li>
+
+    </ul>
+    <div class="tab-content charts">
+        <div *ngIf="currentTab === 'dashboard'" class="tab-pane fade active in">
+            <div class="container-fluid">
+                 <div class="row col-xs-offset-6">   
+                                <div class="col-xs-6"> 
+                                    <select class="selectpicker" placeholder="Search by Instance">
+                                    
+                                        <option>IP</option>
+                                        <option>Hostname</option>
+                                        </select>
+                                        <select class="selectpicker" placeholder="Search by Application">
+                                    
+                                        <option>Name</option>
+                                        <option>IP</option>
+                                        </select>
+                                        </div>
+                                      <div class="col-xs-6">   
+                                    <input style="height: 38px;" type="text" class="form-control" name="x" placeholder="Search term...">
+                                    </div>
+                                      
+                            </div>
+                <div class="row">
+                    
+                            <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h5 class="text-center">Alerts1</h5>
+                                            </div>
+                                            <div class="panel-body text-center ">
+                                                    <table class="table table-striped table-hover ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Occurrence</th>
+                                                                <th> Message</th>
+                                                                <th>Severity</th>
+                                                                <th>Reporting Time</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let alert of alertList">
+                                                                <td>
+                                                                    <a href="#/application-monitoring">
+                                                                        <u>{{alert.ip_address || alert.message}}</u></a>
+                                                                </td>
+                                                                <td>{{alert.message}}</td>
+                                                                <td>{{alert.severity}}</td>
+                                                                <td>{{alert.reportingtime}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <ul class="pagination pagination-sm pull-right">
+                                                    <li class="disabled"><a>&laquo;</a></li>
+                                                    <li class="disabled"><a>1</a></li>
+                                                    <li><a class="disabled">&raquo;</a></li>
+                                                </ul>
+                                            </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h5 class="text-center">Events</h5>
+                                            </div>
+                                            <div class="panel-body rounded-0 text-center">
+                                                <!-- <h5 class="panel-heading display4"></h5> -->
+                                                <div class="box-content no-padding ">
+                                                    <table class="table  table-striped table-hover ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Occurrence</th>
+                                                                <th>Message</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let event of eventList">
+                                                                <td><a href="#/server-monitoring"><u>
+                                                            {{event.ip_address}}</u></a></td>
+                                                                <td>{{event.Message}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="row">   
+                                 <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading text-center">
+                                            <h5>CPU Usage</h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <line-chart data-type="stacked" data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false">
+                                            </line-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"> 
+                                    <div class="panel panel-default text-center">
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">Memory Request</h5>
+                                        </div>
+                                        <div class="panel-body  text-center">
+                                            <!--<h6>Table</h6>-->
+                                            <!--<pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions"></pie-chart>-->
+                                            <bar-chart data-type="bar" data-subscribe="barDataset" [options]="barOptions"> </bar-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">   
+                                <div class="panel panel-default text-center">
+                                    <div class="panel-heading">
+                                        <h5 class="text-center">Response Time</h5>
+                                    </div>
+                                    <div class="panel-body  text-center">
+                                        <area-chart data-type="area" data-subscribe="areaDataset" [options]="areaOptions"> </area-chart>
+                                    </div>
+                                </div>
+                                </div>
+                                     <div class="col-md-6">
+                                        <div class="panel panel-default text-center">
+                                            <div class="panel-heading">
+                                                <h5 class="text-center">Containers</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table table-striped table-hover ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Application</th>
+                                                                <th>Host</th>
+                                                                <th>Occurrence</th>
+                                                                <th>Usage</th>
+                                                                <th>Status</th>
+                                                                <th>last Updated</th>
+                                                                <th>Up Time</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let container of containerList">
+                                                                <td>
+                                                                    <a [routerLink]="(isWidget ? '/widget-monitoring/' : '/monitoring/')+(container.application)">
+                                                                        <u>{{container.application}}</u></a>
+                                                                </td>
+                                                                <td>{{container.host}}</td>
+                                                                <td>{{container.ip_address}}</td>
+                                                                <td>{{container.usage}}</td>
+                                                                <td>{{container.status}}</td>
+                                                                <td>{{container.last_updated}}</td>
+                                                                <td>{{container.up_time}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading text-center">
+                                                    <h5>Request Time</h5>
+                                                </div>
+                                                <div class="panel-body  text-center ">
+                                                    <line-chart data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false"></line-chart>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default ">
+                                                <div class="panel-heading text-center">
+                                                    <h5>Network Usage</h5>
+                                                </div>
+                                                <div class="panel-body  text-center ">
+                                                    <area-chart data-type="stacked" data-subscribe="barDataset" [options]="barOptions" data-dropdown="false"></area-chart>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            </div>
+            </div>
+                        
+        <div *ngIf="currentTab === 'operations'" class="tab-pane fade active in">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container-fluid">
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Application Information</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                         <table class="table table-striped table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th> Version</th>
+                                                            <th>Issuer</th>
+                                                            <th>License Expiry Date</th>
+                                                            <th>Project</th>
+                                                            <th>Role</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let application of applicationList">
+                                                            <td>
+                                                                <a [routerLink]="(isWidget ? '/widget-monitoring/' : '/monitoring/')+(application.name || application.version)">
+                                                                    <u>{{application.name || application.version}}</u></a>
+                                                            </td>
+                                                            <td><a [routerLink]="(isWidget ? '/widget-log-insight/' : '/log-insight/')+
+                                            (application.name || application.version) + '/' +application.issuer + '/' +application.license_exp"><u>
+                                            {{application.version}}</u></a></td>
+                                                              <td>{{application.issuer}}</td>
+                                                            <td>{{application.license_exp}}</td>
+                                                            <td>{{application.project}}</td>
+                                                            <td>{{application.role}}</td>
+                                                        </tr>
+                                                    </tbody>
+
+
+
+                                                </table>
+                                    </div>
+
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Application Facts</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                    <table class="table table-striped table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Replication Count</th>
+                                                            <th>Avg Usage</th>
+                                                            <th>Port Numbers</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let applicationfacts of applicationfactsList">
+                                                            <td>
+                                                                <a [routerLink]="(isWidget ? '/widget-monitoring/' : '/monitoring/')+(applicationfacts.application || applicationfacts.id)">
+                                                                    <u>{{applicationfacts.replication_count || applicationfacts.avg_usage}}</u></a>
+                                                            </td>
+                                                            <td><a [routerLink]="(isWidget ? '/widget-log-insight/' : '/log-insight/')+
+                                            (applicationfacts.replication_count || applicationfacts.avg_usage)"><u>
+                                            {{applicationfacts.avg_usage}}</u></a></td>
+                                                            <td>{{applicationfacts.port_numbers}}</td>
+                                                        </tr>
+                                                    </tbody>
+
+
+
+                                                </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Application Status</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                            <table class="table table-striped table-hover ">
+                                                    <tbody  *ngFor="let applicationstatus of applicationstatusList">
+                                                       
+                                                            <tr><td>User List</td>
+                                                            <td> {{applicationstatus.active_user_count}}</td></tr>
+                                                            <tr>
+                                                                <td> Active user Count</td>
+                                                                <td>{{applicationstatus.dead_locks}}</td></tr>
+                                                            <tr>
+                                                                <td>Dead Locks</td>
+                                                                <td>{{applicationstatus.buffer_busy_waits}}</td></tr>
+                                                            <tr>
+                                                                <td>buffer Busy Waits</td
+                                                                ><td>{{applicationstatus.query_sessions}}</td></tr>
+                                                            <tr>
+                                                                <td>Fast Recovery Usage</td>
+                                                                <td>{{applicationstatus.fast_recovery_usage}}</td></tr>
+                                                            <tr>
+                                                                <td>Log File Completion</td><td>{{applicationstatus.log_file_completion}}</td></tr>
+                                                            <tr>
+                                                                <td>DB Sequential Read Wait</td><td>{{applicationstatus.db_Sequential_read_wait}}</td></tr>
+                                                            <tr>
+                                                                <td>Direct Path Reads</td><td>{{applicationstatus.direct_path_reads}}</td></tr>
+                                                            <tr>
+                                                                <td>DB File Size</td><td>{{applicationstatus.db_file_size}}</td></tr>
+                                                            <tr>
+                                                                <td>Rollbacks</td><td>{{applicationstatus.rollbacks}}</td></tr>
+                                                            <tr>
+                                                                <td>Commits</td><td>{{applicationstatus.commits}}</td></tr>
+                                                            <tr>
+                                                                <td>Up Time</td><td>{{applicationstatus.up_time}}</td></tr>
+                                                            <tr>
+                                                                <td>Redo Writes</td><td>{{applicationstatus.redo_writes}}</td></tr>
+                                                            <tr>
+                                                                <td>Parallel Writes</td><td>{{applicationstatus.parallel_writes}}</td></tr>
+
+                                                        
+                                                    </tbody>
+                                                    
+
+
+
+                                                </table>
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Application Settings</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                                <table class="table table-striped table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>CPU Low Threshold</th>
+                                                            <th> Replication Count</th>
+                                                            <th>CPU High Threshold</th>
+                                                            <th>Replicaton Count</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let applicationsettings of applicationsettingsList">
+                                                            <td>
+                                                                <a [routerLink]="(isWidget ? '/widget-monitoring/' : '/monitoring/')+(applicationsettings.cpu_low_threshold || applicationsettings.replication_count)">
+                                                                    <u>{{applicationsettings.cpu_low_threshold || applicationsettings.replication_count}}</u></a>
+                                                            </td>
+                                                            <td><a [routerLink]="(isWidget ? '/widget-log-insight/' : '/log-insight/')+
+                                            (applicationsettings.cpu_low_threshold || applicationsettings.replication_count)"><u>
+                                            {{applicationsettings.replication_count}}</u></a></td>
+                                                            <td>{{applicationsettings.cpu_high_threshold}}</td>
+                                                            <td>{{applicationsettings.replicaton_count}}</td>
+                                                        </tr>
+                                                    </tbody>
+
+
+
+                                                </table>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Management Operations</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="card-block rounded-0  text-center">
+                                            <button type="button" class="btn op" role="button" data-toggle="tooltip" data-placement="top" title="Start a VM">
+                            <span class="fa fa-play"></span>
+                          </button><button type="button" class="btn op" data-toggle="tooltip" role="button" data-placement="top" title="Stop a VM">
+                            <span class="fa fa-stop"></span>
+                          </button><button type="button" class="btn op" data-toggle="tooltip" role="button" data-placement="top" title="Restart a VM">
+                            <span class="fa fa-repeat"></span>
+                          </button><button type="button" class="btn op" data-toggle="tooltip" role="button" data-placement="top" title="Delete a VM">
+                            <span class="fa fa-window-close"></span>
+                          </button><button type="button" class="btn op" data-toggle="tooltip" role="button" data-placement="top" title="Update a VM">
+                            <span class="fa fa-refresh"></span>
+                          </button>
+                                            <button type="button" class="btn op" data-toggle="tooltip" role="button" data-placement="top" title="Create a Alert">
+                            <span class="fa fa-bell"></span>
+                          </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <h5>Disk Utilty</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                         <table class="table table-striped table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th> Total disk Size(GB)</th>
+                                                            <th>Disk In Use</th>
+                                                            <th>Max Usage</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let diskutilities of diskutilitiesList">
+                                                            <td>
+                                                                <a [routerLink]="(isWidget ? '/widget-monitoring/' : '/monitoring/')+(diskutilities.application || diskutilities.id)">
+                                                                    <u>{{diskutilities.Name || diskutilities.Total_Disk_Size}}</u></a>
+                                                            </td>
+                                                            <td><a [routerLink]="(isWidget ? '/widget-log-insight/' : '/log-insight/')+
+                                            (diskutilities.Name || diskutilities.Total_Disk_Size) +  '/' +diskutilities.Disk_In_use"><u>
+                                            {{diskutilities.Total_Disk_Size}}</u></a></td>
+                                                            <td>{{diskutilities.Disk_In_use}}</td>
+                                                            <td>{{diskutilities.Max_Usage}}</td>
+                                                        </tr>
+                                                    </tbody>
+
+
+
+                                                </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-6">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">Request per VM</h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <bar-chart data-type="stacked" data-subscribe="barDataset" [options]="barOptions"></bar-chart>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            <!--<div class="col-md-6">
+                                    <div class="panel panel-default text-center">
+
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">VM Health</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="panel-body  text-center">
+                                                    <pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions"></pie-chart>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="panel-body text-center">
+                                                    <h6></h6>
+                                                    <pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions"></pie-chart>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="panel panel-default text-center">
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">Response Time</h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <line-chart data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false"></line-chart>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

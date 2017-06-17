@@ -1,0 +1,13 @@
+
+{
+  "serverfactss": [
+    {
+      "active_users": "10",
+      "processes_running": "208",
+      "status": "Active",
+      "active_since": "135 Days",
+      "avg_cpu_util": "20.304%",
+      "avg_memory_util": "2.5765GB"
+    }
+  ]
+}

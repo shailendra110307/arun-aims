@@ -1,0 +1,79 @@
+{
+  "alerts": [
+    {
+      "server": [
+        {      
+          "message": "CPU iowait time increase: 20.84 % ",
+          
+          "ip_address": "192.168.20.89",
+          "severity": "Warning",
+          "reportingtime": "6/13/2017",
+          "classname": "bg-warning"
+        },
+        {
+        
+          "message": "CPU iowait time increase: 15.88 %",
+          
+          "ip_address": "192.168.20.89",
+          "severity": "High",
+          
+          "reportingtime": "6/13/2017",
+          "classname": "bg-high"
+        },
+        {
+          
+          "message": "Mysql stopped",
+          
+          "ip_address": "192.168.20.89",
+          "severity": "Critical",
+        
+          "reportingtime": "6/13/2017",
+          "classname": "bg-critical"
+        }
+      ],
+
+      "application": [
+        {      
+          "message": "CPU iowait time increase: 20.84 % ",
+          
+          "ip_address": "192.168.20.137",
+          "severity": "Warning",
+          
+          "reportingtime": "6/13/2017",
+          "classname": "bg-warning"
+        },
+        {
+          
+          "message": "Mysql stopped",
+          
+          "ip_address": "192.168.20.137",
+          "severity": "Critical",
+        
+          "reportingtime": "6/13/2017",
+          "classname": "bg-critical"
+        },
+        {
+        
+          "message": "CPU iowait time increase: 15.88 %",
+          
+          "ip_address": "192.168.20.137",
+          "severity": "High",
+          
+          "reportingtime": "6/13/2017",
+          "classname": "bg-high"
+        },
+        {
+          
+          "message": "Mysql stopped",
+          
+          "ip_address": "192.168.20.137",
+          "severity": "Critical",
+        
+          "reportingtime": "6/13/2017",
+          "classname": "bg-critical"
+        }
+      ]    
+      
+    }    
+  ]
+}

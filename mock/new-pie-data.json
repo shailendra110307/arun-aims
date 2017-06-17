@@ -1,0 +1,16 @@
+{
+    "summary": {
+        "status": {
+            "active": 89,
+            "error": 4,
+            "shutdown": 23,
+            "pause": 0
+        },
+        "provider": {
+            "openstack": 63,
+            "aws": 12,
+            "azure": 4,
+            "vmware": 37
+        }
+    }
+}

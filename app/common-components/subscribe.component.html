@@ -1,0 +1,75 @@
+<div>
+     <h3>Topology graph</h3>
+    <div class="row">
+        <div class="col-md-12" style="height:600px">
+            <topology-chart data-subscribe="topologyDataset" [options]="topologyOptions"></topology-chart>
+        </div>
+    </div>
+    <hr>
+    <h3>Pie chart</h3>
+    <button (click)="updatePie($event)">Update pie chart</button>
+    <div class="row">
+        <div class="col-md-6" style="height:400px">
+            <pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions"></pie-chart>
+        </div>
+        <div class="col-md-6" style="height:400px">
+            <pie-chart data-type="donut" data-subscribe="pieDataset" [options]="pieOptions3"></pie-chart>
+        </div>
+        <div class="col-md-6" style="height:300px">
+            <pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions2"></pie-chart>
+        </div>
+    </div>
+    <hr>
+
+    <button (click)="updateLine($event)">Update line chart</button>
+    <h3>Line chart</h3>
+    <div class="col-md-12" style="height:300px">
+        <line-chart [options]="lineOptions" data-subscribe="lineDataset" data-dropdown="true"></line-chart>
+    </div>
+    <h3>Line chart - without dropdown</h3>
+    <div class="col-md-12" style="height:300px">
+        <line-chart [options]="lineOptions2" data-subscribe="lineDataset" data-dropdown="false"></line-chart>
+    </div>
+
+    <button (click)="updateArea($event)">Update area chart</button>
+    <h3>Line chart - data from area and without options</h3>
+    <div class="col-md-12" style="height:300px">
+        <line-chart data-subscribe="areaDataset" data-dropdown="'false'"></line-chart>
+    </div>
+
+    <hr>
+
+    <button (click)="updateArea($event)">Update area chart</button>
+    <h3>Area chart</h3>
+    <div class="col-md-12" style="height:300px">
+        <!--<area-chart [options]="areaOptions" data-subscribe="areaDataset"></area-chart>-->
+    </div>
+
+    <h3>Area chart - if no data</h3>
+    <div class="col-md-12" style="height:300px">
+        <!--<area-chart></area-chart>-->
+    </div>
+
+    <h3>Area chart - data as property</h3>
+    <button (click)="generateAreachartDataset($event)">Update area charts</button>
+    <div class="col-md-12" style="height:300px">
+        <area-chart *ngIf="areachartDataset" [dataset]="areachartDataset" [options]="areaOptions"></area-chart>
+    </div>
+
+    <hr>
+
+    <button (click)="updateBar($event)">Update bar charts</button>
+    <h3>Grouped bar / bar chart with areaOptions</h3>
+    <div class="col-md-12" style="height:300px">
+        <bar-chart data-type="grouped" data-subscribe="barDataset" [options]="areaOptions"></bar-chart>
+    </div>
+
+    <h3>Stacked bar / bar chart</h3>
+    <div class="col-md-12" style="height:300px">
+        <bar-chart data-type="stacked" data-subscribe="barDataset" [options]="barOptions"></bar-chart>
+    </div>
+
+    <hr>
+
+
+</div>

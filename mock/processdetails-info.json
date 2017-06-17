@@ -1,0 +1,12 @@
+
+{
+  "processdetailss": [
+    {
+      "total": "208",
+      "java": "10",
+      "snmp": "10",
+      "cronjob": "10",
+      "rsyslogd_8": "4"
+    }
+  ]
+}

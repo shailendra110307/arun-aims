@@ -1,0 +1,9 @@
+{
+  "applicationfactss": [
+    {
+      "replication_count": "3",
+      "avg_usage": "18.85",
+      "port_numbers": "80:31231,1521:31704"
+    }
+  ]
+}

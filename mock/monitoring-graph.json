@@ -1,0 +1,191 @@
+{
+  "datacenter": "richardson",
+  "projects": [
+    {
+      "name": "Suresh",
+      "vm_data": [
+        {
+          "ip_address": "192.54.7.7",
+          "hostname": "Renee Blake",
+          "status": "ShutDown",
+          "provider": "VMWare",
+          "commission_date": "Fri May 16 1997 08:22:33 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.8.7",
+          "hostname": "Blake",
+          "status": "ShutDown",
+          "provider": "VMWare",
+          "commission_date": "Fri May 17 1997 08:22:33 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.9.7",
+          "hostname": "Jeri Mcneil",
+          "status": "Active",
+          "usage": "Low",
+          "provider": "AWS",
+          "commission_date": "Wed Jul 03 1985 23:11:19 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+         {
+          "ip_address": "192.54.1.7",
+          "hostname": "Jeri Mcneil",
+          "status": "Active",
+          "usage": "High",
+          "provider": "AWS",
+          "commission_date": "Wed Jul 03 1985 23:11:19 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        }
+      ]
+    },
+    {
+      "name": "Mahesh",
+      "vm_data": [
+        {
+          "ip_address": "192.54.2.7",
+          "hostname": "Sherman Cochran",
+          "status": "Active",
+          "usage": "High",
+          "provider": "AWS",
+          "commission_date": "Sat Feb 23 2002 01:14:28 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.3.7",
+          "hostname": "Sherman",
+          "status": "Active",
+          "usage": "High",
+          "provider": "AWS",
+          "commission_date": "Sat Feb 23 2002 01:14:28 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.8",
+          "hostname": "Cochran",
+          "status": "Active",
+          "usage": "High",
+          "provider": "AWS",
+          "commission_date": "Sat Feb 24 2002 01:14:28 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.9",
+          "hostname": "Ferguson Valenzuela",
+          "status": "Error",
+          "provider": "AWS",
+          "commission_date": "Tue Jul 07 1992 06:57:44 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        }
+      ]
+    },
+    {
+      "name": "Anand",
+      "vm_data": [
+        {
+          "ip_address": "192.54.2.1",
+          "hostname": "Reese Campbell",
+          "status": "Active",
+          "usage": "Low",
+          "provider": "OpenStack",
+          "commission_date": "Tue Jul 24 1990 03:12:54 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.2",
+          "hostname": "Reese",
+          "status": "Active",
+          "usage": "High",
+          "provider": "OpenStack",
+          "commission_date": "Tue Jul 24 1990 03:12:54 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.3",
+          "hostname": "Reese Esther",
+          "status": "Active",
+          "usage": "Low",
+          "provider": "Azure",
+          "commission_date": "Tue Jul 24 1990 03:12:54 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.4",
+          "hostname": "Cobb Pickett",
+          "status": "ShutDown",
+          "provider": "Azure",
+          "commission_date": "Fri Dec 14 1979 08:58:47 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.54.2.5",
+          "hostname": "Jennie Oneil",
+          "status": "ShutDown",
+          "provider": "AWS",
+          "commission_date": "Wed Dec 15 1971 13:00:45 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.53.2.7",
+          "hostname": "Gibbs Clemons",
+          "status": "Error",
+          "provider": "OpenStack",
+          "commission_date": "Wed Jun 24 1981 06:54:18 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+        
+        {
+          "ip_address": "192.54.2.7",
+          "hostname": "Clemons",
+          "status": "Error",
+          "provider": "OpenStack",
+          "commission_date": "Wed Jun 24 1981 06:54:18 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.55.2.7",
+          "hostname": "Price Mayo",
+          "status": "ShutDown",
+          "provider": "Azure",
+          "commission_date": "Thu Mar 16 1978 20:59:33 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.56.2.7",
+          "hostname": "Price Mayo",
+          "status": "ShutDown",
+          "provider": "OpenStack",
+          "commission_date": "Thu Mar 16 1978 20:59:33 GMT+0000 (UTC)",
+          "operating_system": "Linux",
+          "image": "test"
+        },
+        {
+          "ip_address": "192.57.2.7",
+          "hostname": "Cecilia Vega",
+          "status": "Error",
+          "provider": "VMWare",
+          "commission_date": "Wed Feb 11 1998 12:26:06 GMT+0000 (UTC)",
+          "operating_system": "Windows",
+          "image": "test"
+        }
+      ]
+    }
+      ]
+    }

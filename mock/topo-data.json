@@ -1,0 +1,1845 @@
+{
+  "type": "NetworkGraph",
+  "network": {
+    "nodes": [
+      {
+        "type": "compute:nova",
+        "id": "64fcdaec-edc9-4559-8a9f-71709b829cf7",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.5.192",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:02:70:59"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "c6b3c8dd-4fa1-4209-8c06-18234954fedd",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "10.10.10.4",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:50:2d:c2"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "34677133-f554-4775-bb6e-5a1aca40c38f",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.1.71",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:f9:92:b6"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "94bc4e6b-9de1-4234-b0a1-c246e3d7f8d7",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.9.244",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:60:ff:5d"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "33ce28ad-e159-4701-8ef0-d5ee48d02cd9",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.168.3.52",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:42:4f:62"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.10.10.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:e2:43:2c"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "66014549-196f-40cc-ab1d-d798b842d0d2",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.5.156",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:0a:95:4b"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "d81c5296-80c7-44c4-a8b5-6b9a8c6172ea",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.168.5.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:51:f9:6f"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "6bb360ca-91b8-4133-b863-4cd25135cc97",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.10.10.57",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:3e:51:6f"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "60068d01-3f7d-4f6a-8317-997015cf02b9",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "10.10.10.21",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:37:63:b6"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "6e71f2c2-e9da-499f-8fff-cc2709281435",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.10.10.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:01:52:1a"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "5ffb417d-0814-427a-bffa-248ecb54620a",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.10.10.5",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:a6:4f:b0"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "50359a5d-8d95-4348-bc62-2e5d035f91c7",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.1.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:57:7e:fd"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "e4f8e7ea-06c6-40a8-80cb-4eb87220ee45",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.5.154",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:80:96:18"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "2d60bdfc-47b7-4ce0-9b3c-92065d64586d",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.3.3",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:27:c4:3b"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "b4eab892-baf7-4e6e-aff9-3f5d90766dcb",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.168.1.72",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:cc:81:df"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "ec0c197a-083b-481c-8df9-a5a3ee7555a1",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.3.57",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:a5:21:45"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.9.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:9b:eb:4a"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.1.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:f6:05:cf"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "db774fd1-49a6-4503-a962-a41ccdea3599",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.168.1.65",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:b9:86:e7"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "df7a140b-1252-425b-b35f-9c67b05af8ac",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.10.10.44",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:f5:70:ce"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "d54b6c52-bb80-46b5-b238-950df46eb1d2",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.5.198",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:68:1b:85"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "05e14982-8052-491f-bed1-a557bebf7678",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.9.245",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:ae:a2:e4"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "802d1b1e-778a-4e33-ab9a-1d9a74150c52",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.9.247",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:b1:e5:48"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "a6f33e42-da35-4493-b98e-21d1b7700b0a",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.1.74",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:8f:61:a9"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "35f6e8cd-0a04-4875-b1b7-05c91e7d4302",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "172.29.1.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:03:f4:ac"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "5954e61b-cbfc-4968-9032-eb43c41280ec",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.9.250",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:fc:f7:9e"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "16637b59-626c-4f87-92c5-801f65c64048",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.2.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:57:0c:4e"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "2daea037-cee2-485f-baed-3ac00803ff96",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.2.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:54:84:b5"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.5.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:dd:ba:6f"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "0043695a-7013-4373-a301-ce1208724a9f",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.10.10.61",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:c1:67:46"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "9e6c9d58-4185-4bdf-9b80-43ae0b931765",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.10.10.55",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:29:44:84"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "47ac3c3f-54e3-4418-ab43-7caf8a545698",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.168.3.54",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:27:1a:ae"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "94384baa-c039-4b1f-bd88-beb2c84cd324",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.3.55",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:3f:bc:3a"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "7463a6e7-b7ef-4635-9057-2b9cba9a5390",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.1.64",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:e7:4c:89"
+        }
+      },
+      {
+        "type": "compute:None",
+        "id": "bbf06585-8db1-405a-adfa-aee4ecf04c17",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.168.9.246",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:83:c8:5d"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "b82546bc-a286-4e27-9322-0b78a99483d5",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.1.75",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:a6:60:88"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "a35d4e3e-6238-4e48-84fe-65c0b3a7a6e0",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.10.10.51",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:06:d2:ae"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "d9224fca-86a1-4cbc-b177-4e1471f3ebe9",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.5.194",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:97:8c:0a"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "6eaac5a2-8176-4274-86af-bef5461a7225",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.5.155",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:39:78:2a"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "e89d7b89-3e33-4269-833c-4a3dd5367a46",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "10.10.10.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:59:5c:1b"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "f165b7dd-10d4-4d2a-ae1e-10f9821f6ea3",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "10.10.10.25",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:b2:de:ce"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "10.10.10.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:4e:4d:4d"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "fe4d5811-f34d-4444-b176-c4b549e7183a",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.3.44",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:4f:0e:49"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "342ce7e1-1b05-4025-b598-c599d727a2fa",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.10.10.65",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:ff:00:cc"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.168.3.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:5c:a7:01"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "4cf6c558-e8b8-413c-b745-9ac391ee43fd",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.168.9.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:31:dc:11"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "7a586e4f-a2f1-4510-abcc-75f0cb803ffa",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "172.0.0.7",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:d1:32:0e"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.0.0.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:d1:0f:cb"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "ed51676b-ef77-426a-b7df-79b45bdc80b2",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.0.0.69",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:ee:0e:85"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "618c4ce1-02ae-4a81-8ad2-4b20225b75fb",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.0.0.46",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:09:00:ba"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "e905d72a-2b38-4c34-a125-8364618096d6",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "10.0.0.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:25:59:ff"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "15f22245-4b8b-4a70-ac3f-5b897f12c754",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "10.0.0.18",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:0c:ea:44"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "3ef941c4-265f-4b2a-8c73-a46843cdf807",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "192.0.0.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:3b:8d:33"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "4defcde2-7438-4f04-ad86-46c905db23a2",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "11.0.0.54",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:51:cd:a6"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "9ef4665a-2582-48b1-80fe-a39326664edf",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "11.0.0.49",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:c4:df:2a"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "dd7aacb8-5262-4a67-879e-ed22c4edab08",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.0.0.23",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:9b:64:7a"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "1651da28-72d8-4d81-923e-cb406fb68d4c",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "10.0.0.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:24:64:1d"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "39545216-4f16-4c33-8fdd-4f70c32b3fa4",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/2.png",
+          "ip_address": "192.0.0.100",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:fe:3f:67"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "9a56cd6d-1d6f-4159-9529-5f201208c3f7",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.0.0.99",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:9c:a1:d8"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "aea45800-5a50-482a-b680-07481e09a775",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.0.0.102",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:e3:04:ab"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "cae2a0af-92c2-4c70-b372-f3a6f97e75d0",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/1.png",
+          "ip_address": "172.0.0.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:a9:aa:f6"
+        }
+      },
+      {
+        "type": "network:router_interface",
+        "id": "3ec2ed0f-6b3c-4b68-874d-68e5ab09afa4",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "11.0.0.1",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:01:22:0c"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "0ddc3b64-8e76-4e92-8120-ed331cb24b93",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "192.0.0.68",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:a7:f3:77"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/3.png",
+          "ip_address": "10.0.0.22",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:d7:92:d5"
+        }
+      },
+      {
+        "type": "network:dhcp",
+        "id": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "11.0.0.2",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:ba:01:7c"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "ea57f133-cccd-4347-91f0-8f95fe05b88e",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "192.0.0.48",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:ff:37:31"
+        }
+      },
+      {
+        "type": "compute:nova",
+        "id": "8a0b1bd6-4c02-425f-9d22-dc1af5fe69de",
+        "properties": {
+          "alerts": "10",
+          "imageSrc": "assets/img/4.png",
+          "ip_address": "11.0.0.55",
+          "imageSize": 50,
+          "mac_address": "fa:16:3e:78:73:2f"
+        }
+      },
+      {
+        "type": "compute:app",
+        "id": "5cf6c558-e8b8-413c-b745-9ac391cneta1",
+        "properties": {
+          "ip_address": "0.0.0.8080",
+          "imageSrc": "assets/img/6.png",
+          "app_name": "apache_1.6",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      },
+       {
+        "type": "compute:app",
+        "id": "5cf6c558-e8b8-413c-b745-9ac391cneta2",
+        "properties": {
+          "ip_address": "0.0.0.8081",
+          "imageSrc": "assets/img/6.png",
+          "app_name": "jenkins_1.6",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      },
+       {
+        "type": "compute:app",
+        "id": "5cf6c558-e8b8-413c-b745-9ac391cneta3",
+        "properties": {
+          "ip_address": "0.0.0.8082",
+          "imageSrc": "assets/img/6.png",
+          "app_name": "mysql_1.6",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      },
+      {
+        "type": "nova",
+        "id": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "properties": {
+          "ip_address": "192.168.20.2",
+          "imageSrc": "assets/img/2.png",
+          "router_name": "router2",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      },
+      {
+        "type": "nova",
+        "id": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+        "properties": {
+          "ip_address": "192.168.10.17",
+          "imageSrc": "assets/img/2.png",
+          "router_name": "test",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      },
+      {
+        "type": "network:switch",
+        "id": "5cf6c558-e8b8-413c-b745-9ac391cnetfd",
+        "properties": {
+          "ip_address": "192.168.0.0",
+          "imageSrc": "assets/img/5.png",
+          "router_name": "cisco_switch200g",
+          "alerts": "10",
+          "imageSize": 50
+        }
+      }
+    ],
+    "links": [
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "64fcdaec-edc9-4559-8a9f-71709b829cf7",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+        "target": "c6b3c8dd-4fa1-4209-8c06-18234954fedd",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "34677133-f554-4775-bb6e-5a1aca40c38f",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "94bc4e6b-9de1-4234-b0a1-c246e3d7f8d7",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "33ce28ad-e159-4701-8ef0-d5ee48d02cd9",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "66014549-196f-40cc-ab1d-d798b842d0d2",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "d81c5296-80c7-44c4-a8b5-6b9a8c6172ea",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "6bb360ca-91b8-4133-b863-4cd25135cc97",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+        "target": "60068d01-3f7d-4f6a-8317-997015cf02b9",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "6e71f2c2-e9da-499f-8fff-cc2709281435",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "5ffb417d-0814-427a-bffa-248ecb54620a",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "50359a5d-8d95-4348-bc62-2e5d035f91c7",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "e4f8e7ea-06c6-40a8-80cb-4eb87220ee45",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "2d60bdfc-47b7-4ce0-9b3c-92065d64586d",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "b4eab892-baf7-4e6e-aff9-3f5d90766dcb",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "ec0c197a-083b-481c-8df9-a5a3ee7555a1",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "db774fd1-49a6-4503-a962-a41ccdea3599",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "df7a140b-1252-425b-b35f-9c67b05af8ac",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "d54b6c52-bb80-46b5-b238-950df46eb1d2",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "05e14982-8052-491f-bed1-a557bebf7678",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "802d1b1e-778a-4e33-ab9a-1d9a74150c52",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "a6f33e42-da35-4493-b98e-21d1b7700b0a",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "5954e61b-cbfc-4968-9032-eb43c41280ec",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "16637b59-626c-4f87-92c5-801f65c64048",
+        "target": "2daea037-cee2-485f-baed-3ac00803ff96",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "0043695a-7013-4373-a301-ce1208724a9f",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "9e6c9d58-4185-4bdf-9b80-43ae0b931765",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "47ac3c3f-54e3-4418-ab43-7caf8a545698",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "2daea037-cee2-485f-baed-3ac00803ff96",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "94384baa-c039-4b1f-bd88-beb2c84cd324",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "7463a6e7-b7ef-4635-9057-2b9cba9a5390",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "bbf06585-8db1-405a-adfa-aee4ecf04c17",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+        "target": "b82546bc-a286-4e27-9322-0b78a99483d5",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "a35d4e3e-6238-4e48-84fe-65c0b3a7a6e0",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "35f6e8cd-0a04-4875-b1b7-05c91e7d4302",
+        "target": "2daea037-cee2-485f-baed-3ac00803ff96",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "d9224fca-86a1-4cbc-b177-4e1471f3ebe9",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "7f7acffa-b703-4899-be60-915bc77f430e",
+        "target": "6eaac5a2-8176-4274-86af-bef5461a7225",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+        "target": "e89d7b89-3e33-4269-833c-4a3dd5367a46",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+        "target": "f165b7dd-10d4-4d2a-ae1e-10f9821f6ea3",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+        "target": "fe4d5811-f34d-4444-b176-c4b549e7183a",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "172439eb-e212-439a-b03f-8bd91e111dfb",
+        "target": "342ce7e1-1b05-4025-b598-c599d727a2fa",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+        "target": "4cf6c558-e8b8-413c-b745-9ac391ee43fd",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "cae2a0af-92c2-4c70-b372-f3a6f97e75d0",
+        "target": "7a586e4f-a2f1-4510-abcc-75f0cb803ffa",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "ed51676b-ef77-426a-b7df-79b45bdc80b2",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "618c4ce1-02ae-4a81-8ad2-4b20225b75fb",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "1651da28-72d8-4d81-923e-cb406fb68d4c",
+        "target": "e905d72a-2b38-4c34-a125-8364618096d6",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "1651da28-72d8-4d81-923e-cb406fb68d4c",
+        "target": "15f22245-4b8b-4a70-ac3f-5b897f12c754",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "3ef941c4-265f-4b2a-8c73-a46843cdf807",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+        "target": "4defcde2-7438-4f04-ad86-46c905db23a2",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+        "target": "9ef4665a-2582-48b1-80fe-a39326664edf",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "dd7aacb8-5262-4a67-879e-ed22c4edab08",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "39545216-4f16-4c33-8fdd-4f70c32b3fa4",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "9a56cd6d-1d6f-4159-9529-5f201208c3f7",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "aea45800-5a50-482a-b680-07481e09a775",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+        "target": "3ec2ed0f-6b3c-4b68-874d-68e5ab09afa4",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "0ddc3b64-8e76-4e92-8120-ed331cb24b93",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "1651da28-72d8-4d81-923e-cb406fb68d4c",
+        "target": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+        "target": "5cf6c558-e8b8-413c-b745-9ac391cneta1",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+        "target": "5cf6c558-e8b8-413c-b745-9ac391cneta2",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+        "target": "5cf6c558-e8b8-413c-b745-9ac391cneta3",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+        "target": "ea57f133-cccd-4347-91f0-8f95fe05b88e",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "cae2a0af-92c2-4c70-b372-f3a6f97e75d0",
+        "target": "3ef941c4-265f-4b2a-8c73-a46843cdf807",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+        "target": "8a0b1bd6-4c02-425f-9d22-dc1af5fe69de",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 1.0,
+          "strokeWidth": "1px",
+          "latency": "low",
+          "lq": 1.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "35 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "2daea037-cee2-485f-baed-3ac00803ff96",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "4cf6c558-e8b8-413c-b745-9ac391ee43fd",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "50359a5d-8d95-4348-bc62-2e5d035f91c7",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "6e71f2c2-e9da-499f-8fff-cc2709281435",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "d81c5296-80c7-44c4-a8b5-6b9a8c6172ea",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "target": "e89d7b89-3e33-4269-833c-4a3dd5367a46",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+        "target": "3ec2ed0f-6b3c-4b68-874d-68e5ab09afa4",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+        "target": "3ef941c4-265f-4b2a-8c73-a46843cdf807",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+        "target": "e905d72a-2b38-4c34-a125-8364618096d6",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": true,
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "5cf6c558-e8b8-413c-b745-9ac391cnetfd",
+        "target": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": "true",
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      },
+      {
+        "source": "5cf6c558-e8b8-413c-b745-9ac391cnetfd",
+        "target": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+        "properties": {
+          "status": "ACTIVE",
+          "nlq": 0.0,
+          "strokeWidth": "1px",
+          "latency": "na",
+          "lq": 0.0,
+          "admin_state_up": "true",
+          "strokeDasharray": "solid",
+          "bitrate": "0 mbit/s"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+<div class="d3-bar-chart" #barchart>
+    <input *ngIf="isData" class="daterange-picker" type="text" name="daterangeInput" daterangepicker (selected)="selectedDate($event)" />
+    <div id="switch-wrapper">
+        <span style="font-weight:normal;">{{typeLabelUnselected}}</span>
+        <label class="switch">
+            <input type="checkbox" class="d3-type-bar" checked="false" (change)="changeBarType($event)">
+            <div class="slider"></div>
+        </label>
+        <span style="font-weight:bold;">{{typeLabelSelected}}</span>
+    </div>
+</div>

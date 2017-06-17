@@ -1,0 +1,177 @@
+{
+  "datacenter": "default",
+  "vm_data": {
+    "total": "30",
+    "health": [
+      {
+        "status": "active",
+        "count": "20"
+      },
+      {
+        "status": "shutdown",
+        "count": "4"
+      },
+      {
+        "status": "pause",
+        "count": "1"
+      },
+      {
+        "status": "error",
+        "count": "5"
+      }
+    ]
+  },
+  "provider": {
+    "total": "30",
+    "infrastructure": [
+      {
+        "name": "openstack",
+        "count": "20"
+      },
+      {
+        "name": "vmware",
+        "count": "5"
+      },
+      {
+        "name": "aws",
+        "count": "5"
+      },
+      {
+        "name": "azure",
+        "count": "0"
+      }
+    ]
+  },
+  "os_data": {
+    "total": "50",
+    "os_details": [
+      {
+        "name": "linux",
+        "count": "30",
+        "details": [
+          {
+            "name": "Ubuntu",
+            "version": "12.04",
+            "total": "10",
+            "data": [
+              {
+                "name": "active",
+                "count": "5"
+              },
+              {
+                "name": "shutdown",
+                "count": "2"
+              },
+              {
+                "name": "error",
+                "count": "1"
+              },
+              {
+                "name": "pause",
+                "count": "2"
+              }
+            ]
+          },
+          {
+            "name": "Ubuntu",
+            "version": "14.04",
+            "total": "10",
+            "data": [
+              {
+                "name": "active",
+                "count": "5"
+              },
+              {
+                "name": "shutdown",
+                "count": "2"
+              },
+              {
+                "name": "error",
+                "count": "1"
+              },
+              {
+                "name": "pause",
+                "count": "2"
+              }
+            ]
+          },
+          {
+            "name": "centos",
+            "version": "4",
+            "total": "10",
+            "data": [
+              {
+                "name": "active",
+                "count": "5"
+              },
+              {
+                "name": "shutdown",
+                "count": "2"
+              },
+              {
+                "name": "error",
+                "count": "1"
+              },
+              {
+                "name": "pause",
+                "count": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "windows",
+        "count": "20",
+        "details": [
+          {
+            "name": "windows",
+            "version": "2008",
+            "total": "10",
+            "data": [
+              {
+                "name": "active",
+                "count": "5"
+              },
+              {
+                "name": "shutdown",
+                "count": "5"
+              },
+              {
+                "name": "error",
+                "count": "0"
+              },
+              {
+                "name": "pause",
+                "count": "0"
+              }
+            ]
+          },
+          {
+            "name": "windows",
+            "version": "2012",
+            "total": "10",
+            "data": [
+              {
+                "name": "active",
+                "count": "5"
+              },
+              {
+                "name": "shutdown",
+                "count": "5"
+              },
+              {
+                "name": "error",
+                "count": "0"
+              },
+              {
+                "name": "pause",
+                "count": "0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

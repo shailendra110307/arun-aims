@@ -1,0 +1,36 @@
+{
+  "applications": [
+    {
+      "name": "Jenkins",
+      "version": "1.1",
+      "issuer": "Cnet",
+      "license_exp": "01/01/9999",
+      "project": "PRJ00100023",
+      "role": "Devops"
+    },
+    {
+      "name": "Grafana",
+      "version": "1.1",
+      "issuer": "Infovision",
+      "license_exp": "01/01/9999",
+      "project": "PRJ00100023",
+      "role": "Application"
+    },  
+   {
+      "name": "NGINX",
+      "version": "2.2",
+      "issuer": "Sabre",
+      "license_exp": "01/01/9999",
+      "project": "PRJ00100023",
+      "role": "Webserver"
+    },
+    {
+      "name": "Oracle",
+      "version": "11g",
+      "issuer": "C3global",
+      "license_exp": "01/01/9999",
+      "project": "PRJ00100023",
+      "role": "Database"
+    }
+  ]
+}

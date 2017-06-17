@@ -1,0 +1,10 @@
+<div class="d3-pie-chart" #chart>
+     <div id="switch-wrapper">
+        <span style="font-weight:normal;">{{typeLabelUnselected}}</span>
+        <label class="switch">
+            <input type="checkbox" class="d3-type-bar" checked="false" (change)="changePieType($event)">
+            <div class="slider"></div>
+        </label>
+        <span style="font-weight:bold;">{{typeLabelSelected}}</span>
+    </div>
+</div>

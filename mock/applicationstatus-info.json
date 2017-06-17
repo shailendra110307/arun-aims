@@ -1,0 +1,23 @@
+
+
+{
+  "applicationstatuss": [
+    {
+      "user_list": "2",
+      "active_user_count": "1",
+      "dead_locks": "None",
+      "buffer_busy_waits": "None",
+      "query_sessions": "1",
+      "fast_recovery_usage": "0.98",
+      "log_file_completion": "None",
+      "db_Sequential_read_wait": "4",
+      "direct_path_reads": "None",
+      "db_file_size": "1.18 GB",
+      "rollbacks": "9",
+      "commits": "678",
+      "up_time": "17.5 Hours",
+      "redo_writes": "3093",
+      "parallel_writes": "PRJ00100023"
+    }
+  ]
+}

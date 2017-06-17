@@ -1,0 +1,17 @@
+
+{
+  "serverinfos": [
+    {
+      "node": "Jump Host",
+      "public_ip": "192.168.20.137",
+      "private_ip": "192.168.1.20",
+      "fqdn": "deployment.cnet.com",
+      "domain_name": "cnet.com",
+      "operating_system": "Ubuntu 14.04",
+      "data_center": "Dallas",
+      "provider": "AIMS-CNET",
+      "project": "192.168.1.20",
+      "role": "Deployment Server"
+    }
+  ]
+}

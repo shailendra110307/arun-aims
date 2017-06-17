@@ -1,0 +1,81 @@
+.alert-container .bg-warning{
+    background-color: orange;
+}
+
+.alert-container .bg-high{
+    background-color: yellow;
+}
+
+.alert-container .bg-critical{
+    background-color: red;
+}
+
+.alert-container .alert-status{
+    width: 15px;
+    height: 29px;
+    border: 2px solid #999;
+    margin-top: 5px;
+}
+
+.alert-container .severity-low{
+    background-color: green;
+    height: 9px;
+    margin-top: 16px; 
+}
+
+.alert-container .severity-medium{
+    background-color: yellow;
+    height: 18px;
+    margin-top: 7px; 
+}
+
+.alert-container .severity-high{
+    background-color: red;
+    height: 25px; 
+}
+
+.alert-container .alert-filter{
+    width: 125px;
+    height: 30px;
+}
+
+.alert-container .panel-footer {
+    text-align: right;
+}
+
+.alert-container .alert-icon{
+    border-radius: 25px;
+    background: red;
+    padding: 4px 2px;
+    width: 40px;
+    height: 28px;
+    display: inline-block;
+    color: #fff;
+}
+
+.alert-container  .icon-critical{
+    border-radius: 5px;
+    background: red;
+    padding: 4px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;    
+}
+
+.alert-container  .icon-high{
+    border-radius: 5px;
+    background: yellow;
+    padding: 4px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;    
+}
+
+.alert-container  .icon-warning{
+    border-radius: 5px;
+    background: orange;
+    padding: 4px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;    
+}
