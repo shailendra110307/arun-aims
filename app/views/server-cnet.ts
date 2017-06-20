@@ -23,6 +23,7 @@ import * as d3 from 'd3';
 @Component({
     moduleId: module.id,
     templateUrl: 'server-cnet.html',
+    styleUrls: ['monitoring-cnet.css'],
     providers: [DatasetService,ServerinfoSummary,ServerinfoSummaryService,ProcessdetailsInfo,ProcessdetailsInfoService,ServerfactsInfo,ServerfactsInfoService, DaterangepickerConfig, AlertSummaryService, EventSummaryService, ApplicationInfoService, ContainerSummaryService, DiskutilitiesSummaryService]
 })
 export class ServerComponent {
@@ -30,12 +31,11 @@ export class ServerComponent {
     memoryLineChartData: any;
     isWidget: boolean;
     currentTab: string = 'dashboard';
-    alertList: AlertSummary[];
-    alertsStatus: string;
     initialAlertList: AlertSummary[];
     alertIPs: string[];
     eventList: EventSummary[];
-    initialEventList: EventSummary[];
+    filterEventDash: EventSummary = new EventSummary();
+    totalEvents: number;
     eventIPs : string[];
     applicationList : ApplicationInfo[];
     initialApplicationlist : ApplicationInfo[];
@@ -58,8 +58,17 @@ export class ServerComponent {
 
     alertId: string;
 
+    alertList: AlertSummary[];
+    filter: AlertSummary = new AlertSummary();    
+    alertsServer: AlertSummary[];
+    alertsApplication: AlertSummary[];
+    alertsStatus: string;
+    totalAlerts: number;
+    totalWarning: number = 0;
+    totalHigh: number = 0;
+    totalCritical: number = 0;
+
     id: number;
-    sub: any;
     
   pageIndex: number;
   totalPages: number;
@@ -231,7 +240,6 @@ export class ServerComponent {
   onPageChange(newIndex: number) {
     this.pageIndex = newIndex;
     this.alertList = this.createPageChunk(this.initialAlertList);
-    this.eventList = this.createPageChunk(this.initialEventList);
     this.applicationList = this.createPageChunk(this.initialApplicationlist);
     this.containerList = this.createPageChunk(this.initialContainerList);
     this.diskutilitiesList = this.createPageChunk(this.initialDiskutilitiesList);
@@ -241,20 +249,19 @@ export class ServerComponent {
   }
 
   callAlerts() {
-    this.alertSummaryService.getAlertSummary().subscribe(
-      data => {
-        this.pageIndex = 1;
-        this.initialAlertList = data;
-        this.alertList = this.getAlertList(data["alerts"][0]);
-      },
-      () => console.log('Finished')
-    );
-  }
+        this.alertSummaryService.getAlertSummary().subscribe(
+            data => {
+                this.alertList = this.getAlertList(data["alerts"][0]);
+            },
+            () => console.log('Finished')
+        );
+    }
 
   getAlertList(data: any[]): any[] {
         let alerts:any[] = [];
         let alertsServer:any[] = [];
         let alertsApplication:any[] = [];
+        let alertsFiltered:any[] = [];
         
         for(let i=0; i < data["server"].length; i++){
             alerts.push(data["server"][i]);
@@ -265,34 +272,38 @@ export class ServerComponent {
             alertsApplication.push(data["application"][j]);
         }
         
-        let count:number = 0;
         let length:number = alerts.length;
-        let percentage:number;
-        let statusclass:string;
+        
         for(let i=0; i<length; i++){
+            if(alerts[i].severity === "Warning"){
+                this.totalWarning++;
+            }
+            if(alerts[i].severity === "High"){
+                this.totalHigh++;
+            }
             if(alerts[i].severity === "Critical"){
-                count++;
+                this.totalCritical++;
             }
         }
-        percentage = Math.round((count / length) * 100);
-        if(percentage <= 33){
-            statusclass = 'severity-low';
-        } else if(percentage >= 34 && percentage <= 66){
-            statusclass = 'severity-medium';
-        } else {
-            statusclass = 'severity-high';
-        }        
-        this.alertsStatus = statusclass;
+        this.totalAlerts = alerts.length;
+        this.alertsServer = alertsServer;
+        this.alertsApplication = alertsApplication;
         
-        return alerts;
+        for(let i=0; i<length; i++){
+            if(alerts[i].ip_address == this.id){
+                alertsFiltered.push(alerts[i]);
+            }
+        }
+
+        return alertsFiltered;
     }
   
   callEvents(){
     this.eventSummaryService.getEventSummary().subscribe(
       data=>{
         this.pageIndex =1;
-        this.initialEventList = data;
-        this.eventList = this.createPageChunk(data);
+        this.eventList = data;
+        this.totalEvents = data.length;
       },
       ()=> console.log('Finished')
     );
@@ -384,7 +395,6 @@ callProcessdetailss() {
         this.callServerinfos();
         this.callServerfactss();
         this.callProcessdetailss();
-
         this.id = this.route.snapshot.params['id'];
     }
     changeTab(selectedTab) {

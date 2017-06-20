@@ -79,3 +79,7 @@
     height: 5px;
     display: inline-block;    
 }
+
+.alert-container  .panel-body {
+    min-height: 240px; 
+}

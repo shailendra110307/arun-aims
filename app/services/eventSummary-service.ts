@@ -28,7 +28,7 @@ export class EventSummaryService {
     return body.events.map(function (event: any) {
       const transformedEvent = new EventSummary();
       transformedEvent.ip_address = event.ip_address;
-      transformedEvent.Message = event.Message;
+      transformedEvent.message = event.message;
       transformedEvent.time = event.time;
       transformedEvent.eventtype = event.eventtype;
       return transformedEvent;

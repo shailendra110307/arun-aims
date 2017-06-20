@@ -21,15 +21,19 @@ export class CnetMonitoringView {
     memoryLineChartData: any;
     isWidget: boolean;
     eventList: EventSummary[];
-    initialEventList: EventSummary[];
+    filterEvent: EventSummary = new EventSummary();
+    filterEventApp: EventSummary = new EventSummary();
+    filterEventServer: EventSummary = new EventSummary();
+    totalEvents: number;
     currentTab: string = 'overall';    
     alertIPs: string[];
     pageIndex: number;
     totalPages: number;
     itemsPerPage: number;
-
     alertList: AlertSummary[];
-    filter: AlertSummary = new AlertSummary();    
+    filterAlert: AlertSummary = new AlertSummary();
+    filterServer: AlertSummary = new AlertSummary();
+    filterApplication: AlertSummary = new AlertSummary();    
     alertsServer: AlertSummary[];
     alertsApplication: AlertSummary[];
     alertsStatus: string;
@@ -202,8 +206,8 @@ export class CnetMonitoringView {
         this.eventSummaryService.getEventSummary().subscribe(
             data => {
                 this.pageIndex = 1;
-                this.initialEventList = data;
-                this.eventList = this.createPageChunk(data);
+                this.eventList = data;
+                this.totalEvents = data.length;
             },
             () => console.log('Finished')
         );
@@ -215,15 +219,7 @@ export class CnetMonitoringView {
             },
             () => console.log('Finished')
         );
-    }
-
-    createPageChunk(data: any[]): any[] {
-        if (data) {
-            this.totalPages = _.ceil(data.length / this.itemsPerPage);
-            return _.chunk(data || [], this.itemsPerPage)[this.pageIndex - 1];
-        }
-        return null;
-    }
+    }    
 
     getAlertList(data: any[]): any[] {
         let alerts:any[] = [];

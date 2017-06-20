@@ -31,69 +31,99 @@
                             </div>
                 <div class="row">
                         <div class="col-md-6">
-                                <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h5 class="text-center"><u>Alerts5</u></h5>
-                                                </div>
-                                                <div class="panel-body text-center ">
-                                                    <table class="table table-striped table-hover ">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Occurrence</th>
-                                                                <th> Message</th>
-                                                                <th>Severity</th>
-                                                                <th>Reporting Time</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let alert of alertList">
-                                                                <td>
-                                                                    <a href="#/application-cnet">
-                                                                        <u>{{alert.ip_address || alert.message}}</u>
-                                                                    </a>
-                                                                </td>
-                                                                <td>{{alert.message}}</td>
-                                                                <td>{{alert.severity}}</td>
-                                                                <td>{{alert.reportingtime}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="panel-footer">
-                                                    <ul class="pagination pagination-sm pull-right">
-                                                        <li class="disabled"><a>&laquo;</a></li>
-                                                        <li class="disabled"><a>1</a></li>
-                                                        <li><a class="disabled">&raquo;</a></li>
-                                                    </ul>
-                                                </div>
-                                    </div>
+                                <div class="panel panel-default alert-container">
+                            <div class="panel-heading clearfix">
+                                <h5 class="text-center col-md-12">Alerts
+                                    <span class="alert-icon" [tooltip]="myTooltip">{{totalAlerts}}</span>
+                                </h5>
+                                <div>
+                                    <tooltip-content #myTooltip>
+                                        <span class="icon-critical"></span> Critical: {{totalCritical}}<br />
+                                        <span class="icon-high"></span> High: {{totalHigh}}<br />
+                                        <span class="icon-warning"></span> Warning: {{totalWarning}}
+                                    </tooltip-content>
+                                </div>
+                            </div>
+                            <div id="collapse1">
+                                <div class="panel-body text-center ">
+                                    <table class="table table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Host</th>
+                                                <th> Description</th>
+                                                <th>Priority</th>
+                                                <th>Time</th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" class="alert-filter" name="ip_address" [(ngModel)]="filter.ip_address" placeholder="Host"></th>
+                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filter.message" placeholder="Description"></th>
+                                                <th><input type="text" class="alert-filter" name="severity" [(ngModel)]="filter.severity" placeholder="Priority"></th>
+                                                <th><input type="text" class="alert-filter" name="reportingtime" [(ngModel)]="filter.reportingtime" placeholder="Time"></th>
+                                            </tr>                                            
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let alert of alertList | alertfilter:filter | paginate: { itemsPerPage: 5, currentPage: p5, id:'p5' }">
+                                                <td>
+                                                    <a [routerLink]="['/server-cnet', alert.ip_address]">
+                                                        <u>{{alert.ip_address || alert.message}}</u>
+                                                    </a>
+                                                </td>
+                                                <td>{{alert.message}}</td>
+                                                <td [ngClass]="alert.classname">{{alert.severity}}</td>
+                                                <td>{{alert.reportingtime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <pagination-controls id='p5' class="alert-pagination" (pageChange)="p5 = $event"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
                                 </div>
                                 <div class="col-md-6">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h5 class="text-center"><u>Events </u></h5>
-                                            </div>
-                                                <div class="panel-body rounded-0 text-center">
-                                                    <!-- <h5 class="panel-heading display4"></h5> -->
-                                                    <div class="box-content no-padding ">
-                                                        <table class="table  table-striped table-hover ">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Occurrence</th>
-                                                                    <th>Message</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr *ngFor="let event of eventList">
-                                                                    <td><a href="#/server-cnet"><u>
-                                                                {{event.ip_address}}</u></a></td>
-                                                                    <td>{{event.Message}}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="panel panel-default alert-container">
+                            <div class="panel-heading">
+                                <h5 class="text-center">Events
+                                    <span class="alert-icon">{{totalEvents}}</span>
+                                </h5>
+                            </div>
+                            <div class="panel-body rounded-0 text-center">
+                                <div class="box-content no-padding ">
+                                    <table class="table  table-striped table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>Host</th>
+                                                <th> Description</th>
+                                                <th> Event Type</th>
+                                                <th>Time</th>
+                                            </tr>
+                                            <tr>
+                                                <th><input type="text" class="alert-filter" name="ip_address" [(ngModel)]="filterEventDash.ip_address" placeholder="Host"></th>
+                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filterEventDash.message" placeholder="Description"></th>
+                                                <th><input type="text" class="alert-filter" name="eventtype" [(ngModel)]="filterEventDash.eventtype" placeholder="Event Type"></th>
+                                                <th><input type="text" class="alert-filter" name="time" [(ngModel)]="filterEventDash.time" placeholder="Time"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let event of eventList | alertfilter:filterEventDash | paginate: { itemsPerPage: 5, currentPage: p7, id:'p7' }">
+                                                <td>
+                                                    <a href="#/server-monitoring">
+                                                        <u>{{event.ip_address}}</u>
+                                                    </a>
+                                                </td>
+                                                <td>{{event.message}}</td>
+                                                <td>{{event.eventtype}}</td>
+                                                <td>{{event.time}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <pagination-controls id='p7' class="alert-pagination" (pageChange)="p7 = $event"></pagination-controls>
+                            </div>
+                        </div>
                                         </div>
                                 </div>
                                  <div class="row">

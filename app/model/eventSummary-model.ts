@@ -3,7 +3,7 @@
  */
     export class EventSummary {
         ip_address: string;
-        Message: string;
+        message: string;
         eventtype: string;
         time : string;
         }
