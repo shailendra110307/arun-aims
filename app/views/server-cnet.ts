@@ -20,6 +20,7 @@ import {ProcessdetailsInfo} from '../model/processdetailsInfo-model';
 import {ProcessdetailsInfoService} from '../services/processdetailsInfo-service';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
+import { LocalStorageService } from 'angular-2-local-storage';
 @Component({
     moduleId: module.id,
     templateUrl: 'server-cnet.html',
@@ -222,7 +223,8 @@ export class ServerComponent {
               private serverfactsInfoService: ServerfactsInfoService,
               private ProcessdetailsInfoService: ProcessdetailsInfoService,
               private ref: ChangeDetectorRef, private datasetService: DatasetService,
-              private route: ActivatedRoute ) {
+              private route: ActivatedRoute,
+              private localStorageService: LocalStorageService ) {
     this.isWidget = false;
     this.pageIndex = 1;
     this.itemsPerPage = 5;
@@ -259,41 +261,33 @@ export class ServerComponent {
 
   getAlertList(data: any[]): any[] {
         let alerts:any[] = [];
-        let alertsServer:any[] = [];
-        let alertsApplication:any[] = [];
-        let alertsFiltered:any[] = [];
-        
         for(let i=0; i < data["server"].length; i++){
             alerts.push(data["server"][i]);
-            alertsServer.push(data["server"][i]);
         }
         for(let j=0; j < data["application"].length; j++){
             alerts.push(data["application"][j]);
-            alertsApplication.push(data["application"][j]);
         }
         
-        let length:number = alerts.length;
-        
-        for(let i=0; i<length; i++){
-            if(alerts[i].severity === "Warning"){
-                this.totalWarning++;
-            }
-            if(alerts[i].severity === "High"){
-                this.totalHigh++;
-            }
-            if(alerts[i].severity === "Critical"){
-                this.totalCritical++;
-            }
-        }
-        this.totalAlerts = alerts.length;
-        this.alertsServer = alertsServer;
-        this.alertsApplication = alertsApplication;
-        
-        for(let i=0; i<length; i++){
-            if(alerts[i].ip_address == this.id){
+        let alertsFiltered:any[] = [];
+        let alertIP = localStorage.getItem('alertIP');
+        for(let i=0; i<alerts.length; i++){
+            if(alerts[i].ip_address == alertIP){
                 alertsFiltered.push(alerts[i]);
             }
         }
+        
+        for(let i=0; i<alertsFiltered.length; i++){
+            if(alertsFiltered[i].severity === "Warning"){
+                this.totalWarning++;
+            }
+            if(alertsFiltered[i].severity === "High"){
+                this.totalHigh++;
+            }
+            if(alertsFiltered[i].severity === "Critical"){
+                this.totalCritical++;
+            }
+        }
+        this.totalAlerts = alertsFiltered.length;       
 
         return alertsFiltered;
     }
@@ -409,6 +403,14 @@ callProcessdetailss() {
         // this.datasetService.updateTopologyDataset();
        
     }
+    getAlertPage(alertIP) {
+        localStorage.setItem('alertIP', alertIP);
+        this.router.navigate(['application-cnet']);       
+    }
 
+    getEventPage(eventIP) {
+        localStorage.setItem('eventIP', eventIP);
+        this.router.navigate(['application-cnet']);       
+    }
 
 }

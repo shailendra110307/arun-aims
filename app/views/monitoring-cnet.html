@@ -61,7 +61,7 @@
                                         <tbody>
                                             <tr *ngFor="let alert of alertList | alertfilter:filterAlert | paginate: { itemsPerPage: 5, currentPage: p1, id:'p1' }">
                                                 <td>
-                                                    <a [routerLink]="['/server-cnet', alert.ip_address]">
+                                                    <a href="javascript:void(0)" (click)="getAlertPage(alert.ip_address)">
                                                         <u>{{alert.ip_address || alert.message}}</u>
                                                     </a>
                                                 </td>
@@ -105,7 +105,7 @@
                                         <tbody>
                                             <tr *ngFor="let event of eventList | alertfilter:filterEvent | paginate: { itemsPerPage: 5, currentPage: p2, id:'p2' }">
                                                 <td>
-                                                    <a href="#/server-monitoring">
+                                                    <a href="javascript:void(0)" (click)="getEventPage(event.ip_address)">
                                                         <u>{{event.ip_address}}</u>
                                                     </a>
                                                 </td>
@@ -235,13 +235,13 @@
                         <div class="panel panel-default alert-container">
                             <div class="panel-heading clearfix">
                                 <h5 class="text-center col-md-12">Alerts
-                                    <span class="alert-icon" [tooltip]="myTooltip">{{totalAlerts}}</span>
+                                    <span class="alert-icon" [tooltip]="myTooltip">{{totalAlertsSer}}</span>
                                 </h5>
                                 <div>
                                     <tooltip-content #myTooltip>
-                                        <span class="icon-critical"></span> Critical: {{totalCritical}}<br />
-                                        <span class="icon-high"></span> High: {{totalHigh}}<br />
-                                        <span class="icon-warning"></span> Warning: {{totalWarning}}
+                                        <span class="icon-critical"></span> Critical: {{totalCriticalSer}}<br />
+                                        <span class="icon-high"></span> High: {{totalHighSer}}<br />
+                                        <span class="icon-warning"></span> Warning: {{totalWarningSer}}
                                     </tooltip-content>
                                 </div>
                             </div>
@@ -265,7 +265,7 @@
                                         <tbody>
                                             <tr *ngFor="let alert of alertsServer | alertfilter:filterServer | paginate: { itemsPerPage: 5, currentPage: p3, id:'p3' }">
                                                 <td>
-                                                    <a [routerLink]="['/server-cnet', alert.ip_address]">
+                                                    <a href="javascript:void(0)" (click)="getAlertPage(alert.ip_address)">
                                                         <u>{{alert.ip_address || alert.message}}</u>
                                                     </a>
                                                 </td>
@@ -395,13 +395,13 @@
                         <div class="panel panel-default alert-container">
                             <div class="panel-heading clearfix">
                                 <h5 class="text-center col-md-12">Alerts
-                                    <span class="alert-icon" [tooltip]="myTooltip">{{totalAlerts}}</span>
+                                    <span class="alert-icon" [tooltip]="myTooltip">{{totalAlertsApp}}</span>
                                 </h5>
                                 <div>
                                     <tooltip-content #myTooltip>
-                                        <span class="icon-critical"></span> Critical: {{totalCritical}}<br />
-                                        <span class="icon-high"></span> High: {{totalHigh}}<br />
-                                        <span class="icon-warning"></span> Warning: {{totalWarning}}
+                                        <span class="icon-critical"></span> Critical: {{totalCriticalApp}}<br />
+                                        <span class="icon-high"></span> High: {{totalHighApp}}<br />
+                                        <span class="icon-warning"></span> Warning: {{totalWarningApp}}
                                     </tooltip-content>
                                 </div>
                             </div>
@@ -425,7 +425,7 @@
                                         <tbody>
                                             <tr *ngFor="let alert of alertsApplication | alertfilter:filterApplication | paginate: { itemsPerPage: 5, currentPage: p4, id:'p4' }">
                                                 <td>
-                                                    <a [routerLink]="['/server-cnet', alert.ip_address]">
+                                                    <a href="javascript:void(0)" (click)="getAlertPage(alert.ip_address)">
                                                         <u>{{alert.ip_address || alert.message}}</u>
                                                     </a>
                                                 </td>

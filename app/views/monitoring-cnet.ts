@@ -9,6 +9,7 @@ import { AlertSummaryService } from '../services/alertSummary-service';
 import {AppSettings} from '../settings';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
     moduleId: module.id,
@@ -20,16 +21,17 @@ export class CnetMonitoringView {
     getareaChart: any;
     memoryLineChartData: any;
     isWidget: boolean;
+    currentTab: string = 'overall';
+    alertIPs: string[];
+    pageIndex: number;
+    totalPages: number;
+    itemsPerPage: number;
+
     eventList: EventSummary[];
     filterEvent: EventSummary = new EventSummary();
     filterEventApp: EventSummary = new EventSummary();
     filterEventServer: EventSummary = new EventSummary();
     totalEvents: number;
-    currentTab: string = 'overall';    
-    alertIPs: string[];
-    pageIndex: number;
-    totalPages: number;
-    itemsPerPage: number;
     alertList: AlertSummary[];
     filterAlert: AlertSummary = new AlertSummary();
     filterServer: AlertSummary = new AlertSummary();
@@ -41,6 +43,14 @@ export class CnetMonitoringView {
     totalWarning: number = 0;
     totalHigh: number = 0;
     totalCritical: number = 0;
+    totalAlertsSer: number;
+    totalWarningSer: number = 0;
+    totalHighSer: number = 0;
+    totalCriticalSer: number = 0;
+    totalAlertsApp: number;
+    totalWarningApp: number = 0;
+    totalHighApp: number = 0;
+    totalCriticalApp: number = 0;
 
     public categorical: any = [ // https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9
         { "name": "schemeAccent", "n": 8 },
@@ -181,7 +191,7 @@ export class CnetMonitoringView {
     };
 
     constructor(private router: Router, private alertSummaryService: AlertSummaryService,
-        private ref: ChangeDetectorRef, private datasetService: DatasetService,private eventSummaryService: EventSummaryService) {
+        private ref: ChangeDetectorRef, private datasetService: DatasetService,private eventSummaryService: EventSummaryService, private localStorageService: LocalStorageService) {
         this.isWidget = false;
         this.pageIndex = 1;
         this.itemsPerPage = 5;
@@ -233,11 +243,11 @@ export class CnetMonitoringView {
         for(let j=0; j < data["application"].length; j++){
             alerts.push(data["application"][j]);
             alertsApplication.push(data["application"][j]);
-        }        
-        
-        let length:number = alerts.length;
-        
-        for(let i=0; i<length; i++){
+        }
+        this.alertsServer = alertsServer;
+        this.alertsApplication = alertsApplication;
+
+        for(let i=0; i<alerts.length; i++){
             if(alerts[i].severity === "Warning"){
                 this.totalWarning++;
             }
@@ -249,8 +259,33 @@ export class CnetMonitoringView {
             }
         }
         this.totalAlerts = alerts.length;
-        this.alertsServer = alertsServer;
-        this.alertsApplication = alertsApplication;
+
+        for(let i=0; i<alertsServer.length; i++){
+            if(alertsServer[i].severity === "Warning"){
+                this.totalWarningSer++;
+            }
+            if(alertsServer[i].severity === "High"){
+                this.totalHighSer++;
+            }
+            if(alertsServer[i].severity === "Critical"){
+                this.totalCriticalSer++;
+            }
+        }
+        this.totalAlertsSer = alertsServer.length;
+
+        for(let i=0; i<alertsApplication.length; i++){
+            if(alertsApplication[i].severity === "Warning"){
+                this.totalWarningApp++;
+            }
+            if(alertsApplication[i].severity === "High"){
+                this.totalHighApp++;
+            }
+            if(alertsApplication[i].severity === "Critical"){
+                this.totalCriticalApp++;
+            }
+        }
+        this.totalAlertsApp = alertsApplication.length;
+        
         
         return alerts;
     }
@@ -261,6 +296,17 @@ export class CnetMonitoringView {
             //this.getAllData();
         }
     }
+
+    getAlertPage(alertIP) {
+        localStorage.setItem('alertIP', alertIP);
+        this.router.navigate(['server-cnet']);       
+    }
+
+    getEventPage(eventIP) {
+        localStorage.setItem('eventIP', eventIP);
+        this.router.navigate(['application-cnet']);       
+    }
+
     getAllData() {
         this.datasetService.getServiceData();
     }    

@@ -20,9 +20,11 @@ import {DiskutilitiesSummaryService} from '../services/diskutilitiesSummary-serv
 import { DaterangepickerConfig } from 'ng2-daterangepicker';
 import * as _ from 'lodash';
 import * as d3 from 'd3';
+import { LocalStorageService } from 'angular-2-local-storage';
 @Component({
     moduleId: module.id,
     templateUrl: 'application-cnet.html',
+    styleUrls: ['monitoring-cnet.css'],
     providers: [DatasetService, DaterangepickerConfig, AlertSummaryService, EventSummaryService, 
     ApplicationInfoService,ApplicationfactsInfoService,  ApplicationstatusInfoService, 
     ApplicationsettingsInfoService, ContainerSummaryService, DiskutilitiesSummaryService]
@@ -32,11 +34,7 @@ export class ApplicationComponent {
     memoryLineChartData: any;
     isWidget: boolean;
     currentTab: string = 'dashboard';
-    alertList: AlertSummary[];
-     initialAlertList: AlertSummary[];
-     alertIPs: string[];
-     eventList: EventSummary[];
-     initialEventList: EventSummary[];
+     alertIPs: string[];     
      eventIPs : string[];
     applicationList : ApplicationInfo[];
     initialApplicationlist : ApplicationInfo[];
@@ -59,6 +57,23 @@ export class ApplicationComponent {
     pageIndex: number;
     totalPages: number;
     itemsPerPage: number;
+    
+    eventList: EventSummary[];
+    filterEvent: EventSummary = new EventSummary();
+    filterEventApp: EventSummary = new EventSummary();
+    filterEventServer: EventSummary = new EventSummary();
+    totalEvents: number;
+    alertList: AlertSummary[];
+    filterAlert: AlertSummary = new AlertSummary();
+    filterServer: AlertSummary = new AlertSummary();
+    filterApplication: AlertSummary = new AlertSummary();    
+    alertsServer: AlertSummary[];
+    alertsApplication: AlertSummary[];
+    alertsStatus: string;
+    totalAlerts: number;
+    totalWarning: number = 0;
+    totalHigh: number = 0;
+    totalCritical: number = 0;
 
     public categorical: any = [//https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9
         { "name": "schemeAccent", "n": 8 },
@@ -168,7 +183,8 @@ export class ApplicationComponent {
                 private applicationsettingsInfoService: ApplicationsettingsInfoService,
               private containerSummaryService: ContainerSummaryService,
               private diskutilitiesSummaryService: DiskutilitiesSummaryService,
-              private ref: ChangeDetectorRef, private datasetService: DatasetService) {
+              private ref: ChangeDetectorRef, private datasetService: DatasetService,
+              private localStorageService: LocalStorageService) {
     this.isWidget = false;
     this.pageIndex = 1;
     this.itemsPerPage = 5;
@@ -185,8 +201,6 @@ export class ApplicationComponent {
 
   onPageChange(newIndex: number) {
     this.pageIndex = newIndex;
-    this.alertList = this.createPageChunk(this.initialAlertList);
-    this.eventList = this.createPageChunk(this.initialEventList);
     this.applicationList = this.createPageChunk(this.initialApplicationlist);
      this.applicationfactsList = this.createPageChunk(this.initialApplicationfactslist);
     this.applicationstatusList = this.createPageChunk(this.initialApplicationstatuslist);
@@ -199,8 +213,7 @@ export class ApplicationComponent {
     this.alertSummaryService.getAlertSummary().subscribe(
       data => {
         this.pageIndex = 1;
-        this.initialAlertList = data;
-        this.alertList = this.createPageChunk(data);
+        this.alertList = this.getAlertList(data["alerts"][0]);
       },
       () => console.log('Finished')
     );
@@ -210,12 +223,58 @@ export class ApplicationComponent {
     this.eventSummaryService.getEventSummary().subscribe(
       data=>{
         this.pageIndex =1;
-        this.initialEventList = data;
-        this.eventList = this.createPageChunk(data);
+        this.eventList = this.getEventList(data);        
       },
       ()=> console.log('Finished')
     );
   }
+
+  getEventList(data: any[]): any[] {
+        let eventsFiltered:any[] = [];        
+        let eventIP = localStorage.getItem('eventIP');
+        for(let i=0; i<data.length; i++){
+            if(data[i].ip_address == eventIP){
+                eventsFiltered.push(data[i]);
+            }
+        }
+        this.totalEvents = eventsFiltered.length;
+        return eventsFiltered;
+    }
+  
+  getAlertList(data: any[]): any[] {
+        let alerts:any[] = [];
+        let alertsServer:any[] = [];
+        let alertsApplication:any[] = [];
+        
+        for(let i=0; i < data["server"].length; i++){
+            alerts.push(data["server"][i]);
+            alertsServer.push(data["server"][i]);
+        }
+        for(let j=0; j < data["application"].length; j++){
+            alerts.push(data["application"][j]);
+            alertsApplication.push(data["application"][j]);
+        }        
+        
+        let length:number = alerts.length;
+        
+        for(let i=0; i<length; i++){
+            if(alerts[i].severity === "Warning"){
+                this.totalWarning++;
+            }
+            if(alerts[i].severity === "High"){
+                this.totalHigh++;
+            }
+            if(alerts[i].severity === "Critical"){
+                this.totalCritical++;
+            }
+        }
+        this.totalAlerts = alerts.length;
+        this.alertsServer = alertsServer;
+        this.alertsApplication = alertsApplication;
+        
+        return alerts;
+    }
+    
   callApplications() {
     this.applicationInfoService.getApplicationInfo().subscribe(
       data => {
@@ -285,11 +344,11 @@ callDiskutilitiess() {
   onIPChange(filteredIPs: any[]) {
     this.pageIndex = 1;
     if (filteredIPs === undefined) {
-      this.alertList = this.createPageChunk(this.initialAlertList);
+      //this.alertList = this.createPageChunk(this.initialAlertList);
     } else {
-      this.alertList = this.createPageChunk(_.filter(this.initialAlertList || [], function (alert) {
-        return _.includes(filteredIPs, alert.ip_address);
-      }));
+      // this.alertList = this.createPageChunk(_.filter(this.initialAlertList || [], function (alert) {
+      //   return _.includes(filteredIPs, alert.ip_address);
+      // }));
     }
   }
 

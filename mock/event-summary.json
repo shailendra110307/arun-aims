@@ -1,57 +1,57 @@
 {
   "events": [
     {
-      "ip_address":"192.168.20.206",
+      "ip_address":"192.168.20.89",
       "message": "User added:oratest",
       "time": "6/13/2017",
       "eventtype": "sever"
       
     },
     {
-      "ip_address":"192.168.20.206",
+      "ip_address":"192.168.20.89",
       "message": "Server restarted",
       "time": "6/13/2017",
       "eventtype": "sever"
       
     },
     {
-      "ip_address":"192.168.20.215",
+      "ip_address":"192.168.20.89",
       "message": "MySQL updated",
-      "time": "6/13/2017",
-      "eventtype": "sever"
-    },
-    {
-      "ip_address":"192.168.10.160",
-      "message": "New service cluster created",
       "time": "6/13/2017",
       "eventtype": "sever"
     },
     {
       "ip_address":"192.168.20.89",
+      "message": "New service cluster created",
+      "time": "6/13/2017",
+      "eventtype": "sever"
+    },
+    {
+      "ip_address":"192.168.20.137",
       "message": "Server added for monitoring",
       "time": "6/13/2017",
       "eventtype": "sever"
     },
     {
-      "ip_address":"192.168.20.206",
+      "ip_address":"192.168.20.137",
       "message": "User added:oratest",
       "time": "6/13/2017",
       "eventtype": "sever"
     },
     {
-      "ip_address":"192.168.20.206",
+      "ip_address":"192.168.20.137",
       "message": "Server restarted",
       "time": "6/13/2017",
       "eventtype": "sever"
     },
     {
-      "ip_address":"192.168.20.215",
+      "ip_address":"192.168.20.137",
       "message": "MySQL updated",
       "time": "6/13/2017",
       "eventtype": "sever"
     },
     {
-      "ip_address":"192.168.10.160",
+      "ip_address":"192.168.20.137",
       "message": "New service cluster created",
       "time": "6/13/2017",
       "eventtype": "sever"

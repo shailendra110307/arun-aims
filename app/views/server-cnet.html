@@ -64,7 +64,7 @@
                                         <tbody>
                                             <tr *ngFor="let alert of alertList | alertfilter:filter | paginate: { itemsPerPage: 5, currentPage: p5, id:'p5' }">
                                                 <td>
-                                                    <a [routerLink]="['/server-cnet', alert.ip_address]">
+                                                    <a href="javascript:void(0)" (click)="getAlertPage(alert.ip_address)">
                                                         <u>{{alert.ip_address || alert.message}}</u>
                                                     </a>
                                                 </td>
@@ -108,7 +108,7 @@
                                         <tbody>
                                             <tr *ngFor="let event of eventList | alertfilter:filterEventDash | paginate: { itemsPerPage: 5, currentPage: p7, id:'p7' }">
                                                 <td>
-                                                    <a href="#/server-monitoring">
+                                                    <a href="javascript:void(0)" (click)="getEventPage(event.ip_address)">
                                                         <u>{{event.ip_address}}</u>
                                                     </a>
                                                 </td>

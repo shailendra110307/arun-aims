@@ -6,6 +6,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {Ng2PaginationModule} from 'ng2-pagination';
 import {AlertFilterPipe} from './common-components/alertfilter';
 import {TooltipModule} from "ng2-tooltip";
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 // import {ChartModule} from 'angular2-highcharts';
 
@@ -64,7 +65,7 @@ const appRoutes: Routes = [
     component: ApplicationComponent
   },
   {
-    path: 'server-cnet/:id',
+    path: 'server-cnet',
     component: ServerComponent
   },
   {
@@ -123,7 +124,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpModule, Ng2PaginationModule, TooltipModule, Daterangepicker, JsonpModule, RouterModule.forRoot(appRoutes, { useHash: true })],
+  imports: [BrowserModule, FormsModule, HttpModule, Ng2PaginationModule, TooltipModule, Daterangepicker, JsonpModule, RouterModule.forRoot(appRoutes, { useHash: true }), LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        })],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [Content, PieComponent, ApplicationComponent, ServerComponent, LineComponent, BarComponent, AreaComponent, 
   CnetMonitoringView, TopologyComponent, AlertFilterPipe],

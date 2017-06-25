@@ -42,7 +42,8 @@
       'bootstrap-daterangepicker': 'npm:bootstrap-daterangepicker',
       'ng2-daterangepicker': 'npm:ng2-daterangepicker',
       'ng2-pagination': 'npm:ng2-pagination',
-      "ng2-tooltip": "node_modules/ng2-tooltip"
+      "ng2-tooltip": "node_modules/ng2-tooltip",
+      "angular-2-local-storage": "node_modules/angular-2-local-storage"
     },
     meta: {},
     // packages tells the System loader how to load when no filename and/or no extension
@@ -108,6 +109,10 @@
       },
       "ng2-tooltip": {
         main: "index.js",
+        defaultExtension: "js"
+      },
+      "angular-2-local-storage": {
+        main: "dist/index.js",
         defaultExtension: "js"
       }
     }
