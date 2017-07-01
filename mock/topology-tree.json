@@ -1,0 +1,1738 @@
+{
+  "type": "network:switch",
+  "id": "5cf6c558-e8b8-413c-b745-9ac391cnetfd",
+  "name": "None",
+  "properties": {
+    "ip_address": "192.168.5.192",
+    "mac_address": "fa:16:3e:02:70:59",
+    "imageSrc": "assets/img/6.png",
+    "alerts": "9",
+    "imageSize": 50,
+    "circleColor": "red"
+  },
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "type": "network:dhcp",
+              "id": "16637b59-626c-4f87-92c5-801f65c64048",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+            },
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "33ce28ad-e159-4701-8ef0-d5ee48d02cd9",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "2d60bdfc-47b7-4ce0-9b3c-92065d64586d",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "ec0c197a-083b-481c-8df9-a5a3ee7555a1",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "47ac3c3f-54e3-4418-ab43-7caf8a545698",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "94384baa-c039-4b1f-bd88-beb2c84cd324",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "fe4d5811-f34d-4444-b176-c4b549e7183a",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "d4f4f6c3-39a0-47ac-b05f-18d097d9d8b4",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+            },
+            {
+              "type": "network:dhcp",
+              "id": "35f6e8cd-0a04-4875-b1b7-05c91e7d4302",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+            }
+          ],
+          "type": "network:router_interface",
+          "id": "2daea037-cee2-485f-baed-3ac00803ff96",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "94bc4e6b-9de1-4234-b0a1-c246e3d7f8d7",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "05e14982-8052-491f-bed1-a557bebf7678",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "802d1b1e-778a-4e33-ab9a-1d9a74150c52",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "5954e61b-cbfc-4968-9032-eb43c41280ec",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:None",
+                  "id": "bbf06585-8db1-405a-adfa-aee4ecf04c17",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dotted",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "594a1602-6a1b-4bdd-9801-41369ce2c475",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "4cf6c558-e8b8-413c-b745-9ac391ee43fd",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "34677133-f554-4775-bb6e-5a1aca40c38f",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "b4eab892-baf7-4e6e-aff9-3f5d90766dcb",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "db774fd1-49a6-4503-a962-a41ccdea3599",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "a6f33e42-da35-4493-b98e-21d1b7700b0a",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "7463a6e7-b7ef-4635-9057-2b9cba9a5390",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "b82546bc-a286-4e27-9322-0b78a99483d5",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "a0a36c4f-4b12-45de-baa1-d7932d8466eb",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "50359a5d-8d95-4348-bc62-2e5d035f91c7",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "6bb360ca-91b8-4133-b863-4cd25135cc97",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "5ffb417d-0814-427a-bffa-248ecb54620a",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "df7a140b-1252-425b-b35f-9c67b05af8ac",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "0043695a-7013-4373-a301-ce1208724a9f",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "9e6c9d58-4185-4bdf-9b80-43ae0b931765",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "a35d4e3e-6238-4e48-84fe-65c0b3a7a6e0",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "342ce7e1-1b05-4025-b598-c599d727a2fa",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "172439eb-e212-439a-b03f-8bd91e111dfb",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "6e71f2c2-e9da-499f-8fff-cc2709281435",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "64fcdaec-edc9-4559-8a9f-71709b829cf7",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "66014549-196f-40cc-ab1d-d798b842d0d2",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "e4f8e7ea-06c6-40a8-80cb-4eb87220ee45",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "d54b6c52-bb80-46b5-b238-950df46eb1d2",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "d9224fca-86a1-4cbc-b177-4e1471f3ebe9",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "6eaac5a2-8176-4274-86af-bef5461a7225",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "7f7acffa-b703-4899-be60-915bc77f430e",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "d81c5296-80c7-44c4-a8b5-6b9a8c6172ea",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "c6b3c8dd-4fa1-4209-8c06-18234954fedd",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "60068d01-3f7d-4f6a-8317-997015cf02b9",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "f165b7dd-10d4-4d2a-ae1e-10f9821f6ea3",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "77b7080b-190b-41c8-bf5e-565511f8e9d7",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "e89d7b89-3e33-4269-833c-4a3dd5367a46",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      }
+      ],
+      "type": "nova",
+      "id": "b7fcb9e2-fa96-465c-9f9d-9435ab003205",
+      "name": "None",
+      "properties": {
+        "ip_address": "192.168.5.192",
+        "mac_address": "fa:16:3e:02:70:59",
+        "imageSrc": "assets/img/6.png",
+        "alerts": "9",
+        "imageSize": 50,
+        "circleColor": "green"
+      },
+      "linkProperties": {
+        "status": "ACTIVE",
+        "nlq": 0.0,
+        "strokeWidth": "1px",
+        "latency": "na",
+        "lq": 0.0,
+        "admin_state_up": true,
+        "strokeDasharray": "dashed",
+        "bitrate": "0 mbit/s"
+      }
+  },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "4defcde2-7438-4f04-ad86-46c905db23a2",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "9ef4665a-2582-48b1-80fe-a39326664edf",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "8a0b1bd6-4c02-425f-9d22-dc1af5fe69de",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "9e875ef4-cdfa-4bae-9a9a-a5c6dfe7762f",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "3ec2ed0f-6b3c-4b68-874d-68e5ab09afa4",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "ed51676b-ef77-426a-b7df-79b45bdc80b2",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "618c4ce1-02ae-4a81-8ad2-4b20225b75fb",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "dd7aacb8-5262-4a67-879e-ed22c4edab08",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "39545216-4f16-4c33-8fdd-4f70c32b3fa4",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "9a56cd6d-1d6f-4159-9529-5f201208c3f7",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "aea45800-5a50-482a-b680-07481e09a775",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "0ddc3b64-8e76-4e92-8120-ed331cb24b93",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "dashed",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "type": "compute:nova",
+                  "id": "ea57f133-cccd-4347-91f0-8f95fe05b88e",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "30c0b004-a0d5-4bac-a152-973e720f3cb4",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          },
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "7a586e4f-a2f1-4510-abcc-75f0cb803ffa",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                }
+              ],
+              "type": "network:dhcp",
+              "id": "cae2a0af-92c2-4c70-b372-f3a6f97e75d0",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "3ef941c4-265f-4b2a-8c73-a46843cdf807",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "type": "compute:nova",
+                  "id": "15f22245-4b8b-4a70-ac3f-5b897f12c754",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "red"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+                },
+                {
+                  "children": [
+                    {
+                      "type": "compute:app",
+                      "id": "5cf6c558-e8b8-413c-b745-9ac391cneta1",
+                      "name": "None",
+                      "properties": {
+                        "ip_address": "192.168.5.192",
+                        "mac_address": "fa:16:3e:02:70:59",
+                        "imageSrc": "assets/img/6.png",
+                        "alerts": "9",
+                        "imageSize": 50,
+                        "circleColor": "red"
+                      },
+                      "linkProperties": {
+                        "status": "ACTIVE",
+                        "nlq": 0.0,
+                        "strokeWidth": "1px",
+                        "latency": "na",
+                        "lq": 0.0,
+                        "admin_state_up": true,
+                        "strokeDasharray": "dotted",
+                        "bitrate": "0 mbit/s"
+                      }
+                    },
+                    {
+                      "type": "compute:app",
+                      "id": "5cf6c558-e8b8-413c-b745-9ac391cneta2",
+                      "name": "None",
+                      "properties": {
+                        "ip_address": "192.168.5.192",
+                        "mac_address": "fa:16:3e:02:70:59",
+                        "imageSrc": "assets/img/6.png",
+                        "alerts": "9",
+                        "imageSize": 50,
+                        "circleColor": "red"
+                      },
+                      "linkProperties": {
+                        "status": "ACTIVE",
+                        "nlq": 0.0,
+                        "strokeWidth": "1px",
+                        "latency": "na",
+                        "lq": 0.0,
+                        "admin_state_up": true,
+                        "strokeDasharray": "dotted",
+                        "bitrate": "0 mbit/s"
+                      }
+                    },
+                    {
+                      "type": "compute:app",
+                      "id": "5cf6c558-e8b8-413c-b745-9ac391cneta3",
+                      "name": "None",
+                      "properties": {
+                        "ip_address": "192.168.5.192",
+                        "mac_address": "fa:16:3e:02:70:59",
+                        "imageSrc": "assets/img/6.png",
+                        "alerts": "9",
+                        "imageSize": 50,
+                        "circleColor": "red"
+                      },
+                      "linkProperties": {
+                        "status": "ACTIVE",
+                        "nlq": 0.0,
+                        "strokeWidth": "1px",
+                        "latency": "na",
+                        "lq": 0.0,
+                        "admin_state_up": true,
+                        "strokeDasharray": "dotted",
+                        "bitrate": "0 mbit/s"
+                      }
+                    }
+                  ],
+                  "type": "compute:nova",
+                  "id": "6e98bff4-e772-43d8-8bb2-9c30a6bd522e",
+                  "name": "None",
+                  "properties": {
+                    "ip_address": "192.168.5.192",
+                    "mac_address": "fa:16:3e:02:70:59",
+                    "imageSrc": "assets/img/6.png",
+                    "alerts": "9",
+                    "imageSize": 50,
+                    "circleColor": "green"
+                  },
+                  "linkProperties": {
+                    "status": "ACTIVE",
+                    "nlq": 0.0,
+                    "strokeWidth": "1px",
+                    "latency": "na",
+                    "lq": 0.0,
+                    "admin_state_up": true,
+                    "strokeDasharray": "solid",
+                    "bitrate": "0 mbit/s"
+                  }
+              }
+              ],
+              "type": "network:dhcp",
+              "id": "1651da28-72d8-4d81-923e-cb406fb68d4c",
+              "name": "None",
+              "properties": {
+                "ip_address": "192.168.5.192",
+                "mac_address": "fa:16:3e:02:70:59",
+                "imageSrc": "assets/img/6.png",
+                "alerts": "9",
+                "imageSize": 50,
+                "circleColor": "red"
+              },
+              "linkProperties": {
+                "status": "ACTIVE",
+                "nlq": 0.0,
+                "strokeWidth": "1px",
+                "latency": "na",
+                "lq": 0.0,
+                "admin_state_up": true,
+                "strokeDasharray": "dotted",
+                "bitrate": "0 mbit/s"
+              }
+          }
+          ],
+          "type": "network:router_interface",
+          "id": "e905d72a-2b38-4c34-a125-8364618096d6",
+          "name": "None",
+          "properties": {
+            "ip_address": "192.168.5.192",
+            "mac_address": "fa:16:3e:02:70:59",
+            "imageSrc": "assets/img/6.png",
+            "alerts": "9",
+            "imageSize": 50,
+            "circleColor": "red"
+          },
+          "linkProperties": {
+            "status": "ACTIVE",
+            "nlq": 0.0,
+            "strokeWidth": "1px",
+            "latency": "na",
+            "lq": 0.0,
+            "admin_state_up": true,
+            "strokeDasharray": "dotted",
+            "bitrate": "0 mbit/s"
+          }
+      }
+      ],
+      "type": "nova",
+      "id": "b36c3ed8-2597-49a2-96fe-9a1f57300c2c",
+      "name": "None",
+      "properties": {
+        "ip_address": "192.168.5.192",
+        "mac_address": "fa:16:3e:02:70:59",
+        "imageSrc": "assets/img/6.png",
+        "alerts": "9",
+        "imageSize": 50,
+        "circleColor": "blue"
+      },
+      "linkProperties": {
+        "status": "ACTIVE",
+        "nlq": 0.0,
+        "strokeWidth": "1px",
+        "latency": "na",
+        "lq": 0.0,
+        "admin_state_up": true,
+        "strokeDasharray": "dotted",
+        "bitrate": "0 mbit/s"
+      }
+  }
+  ]
+}

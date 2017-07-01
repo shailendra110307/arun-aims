@@ -1,11 +1,24 @@
-<div class="d3-bar-chart" #barchart>
-    <input *ngIf="isData" class="daterange-picker" type="text" name="daterangeInput" daterangepicker (selected)="selectedDate($event)" />
-    <div id="switch-wrapper">
+<div class="d3-bar-chart" #chart>
+    <div class="aims-export-menu aims-export-menu-top-right amExportButton active">
+        <ul>
+            <li class="export-main"><a><span>menu.label.undefined</span></a>
+                <ul>
+                    <li><a><span>png</span></a></li>
+                    <li><a><span>jpeg</span></a></li>
+                    <li><a><span>json</span></a></li>
+                    <li><a><span>csv</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <img src="./assets/img/calendar.svg" alt="Date" class="daterange-picker" name="daterangeInput" daterangepicker (selected)="selectedDate($event)" />
+
+    <div class="switch-wrapper-bar">
         <span style="font-weight:normal;">{{typeLabelUnselected}}</span>
         <label class="switch">
             <input type="checkbox" class="d3-type-bar" checked="false" (change)="changeBarType($event)">
             <div class="slider"></div>
         </label>
-        <span style="font-weight:bold;">{{typeLabelSelected}}</span>
+        <span style="font-weight:normal;">{{typeLabelSelected}}</span>
     </div>
 </div>

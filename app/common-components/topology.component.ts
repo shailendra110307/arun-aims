@@ -17,6 +17,7 @@ import { DatasetService } from '../services/dataset-service';
 export class TopologyComponent implements OnInit {
   @ViewChild('chart') private chartContainer: ElementRef;
   @Input() public options: any = {};
+  private chartId: any;
   private element: any;
   private isData: any = true;
   private initData: any;
@@ -36,25 +37,36 @@ export class TopologyComponent implements OnInit {
   
 
   constructor(private datasetService: DatasetService, private elementRef: ElementRef) {
-    let native = elementRef.nativeElement;
-    let subscribe:any = native.getAttribute("data-subscribe");
-    if (!subscribe) { 
-      this.isData = false;
-      return;
-    }
-    datasetService[subscribe].subscribe((initData:any) => {
-      this.initData = initData;
-      this.data = initData;
-      this.element = this.chartContainer.nativeElement;
-      this.run();
-    });
     this.strokeDasharray.solid = "none";
     this.strokeDasharray.dotted = "2,3";
     this.strokeDasharray.dashed = "6,3";
   }
 
   public ngOnInit(){// we can use this.options
+    let native = this.elementRef.nativeElement;
+    this.chartId = native.getAttribute("data-id") || "topo-chart-id-" + Date.now();
     this.element = this.chartContainer.nativeElement;
+    d3.select(this.element).attr("id", this.chartId);
+
+    let subscribe:any = native.getAttribute("data-subscribe");
+    if (!subscribe) {
+      this.isData = false;
+      return;
+    }
+    this.datasetService[subscribe].subscribe((initData:any) => {
+      if (!initData) {
+        return;
+      }
+      this.isData = true;
+      this.initData = initData;
+      this.data = initData;
+      this.run();
+    });
+
+  }
+  
+  
+  private run() {
     if (!this.isData) {
       d3.select(this.element).append('p')
        .attr('class', 'message')
@@ -66,13 +78,7 @@ export class TopologyComponent implements OnInit {
        this.create(); 
        this.update(); 
      }
-     if (this.data) { this.update(); }
-  }
-  
-  
-  private run() {
-    // console.log(this.data);
-    if (this.svg && this.data) { this.update(); }
+     if (this.svg && this.data) { this.update(); }
   }
 
   

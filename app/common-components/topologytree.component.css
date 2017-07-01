@@ -1,0 +1,67 @@
+.d3-topologytree-chart {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.d3-topologytree-chart .table {
+    margin: 0 !important;
+}
+
+.d3-topologytree-chart .node,
+.d3-topologytree-chart .link-invisible {
+    pointer-events: all;
+}
+
+.d3-topologytree-chart .link,
+.d3-topologytree-chart .node-circle,
+.d3-topologytree-chart .node-label,
+.d3-topologytree-chart .link-label {
+    pointer-events: none;
+}
+
+.d3-topologytree-chart .d3-tooltip-content {
+    position: relative;
+    background: #fff;
+    border-radius: 0px;
+    border: 0px solid #999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /*padding: 4px 0px;*/
+}
+
+.d3-topologytree-chart .d3-tooltip-content p {
+    margin: 4px 8px;
+    color: #2b2b2b;
+}
+
+.d3-topologytree-chart .d3-tooltip-wrapper {
+    position: absolute;
+    z-index: 999;
+}
+
+.d3-topologytree-chart .d3-date {
+    /*padding-top: 4px;*/
+    font-weight: bold;
+}
+
+.d3-topologytree-chart .bold {
+    font-weight: bold;
+}
+
+.d3-topologytree-chart .d3-hidden {
+    display: none;
+}
+
+.d3-topologytree-chart hr {
+    margin: 0;
+    padding: 0;
+}
+
+.d3-topologytree-chart .message {
+    position: absolute;
+    padding: 10px;
+    background: #fff;
+    color: #000;
+    top: 40%;
+    right: 50%;
+}

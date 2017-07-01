@@ -16,13 +16,24 @@ export class AlertSummaryService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  getAlertSummary (): Observable<AlertSummary[]> {
-    return this.http.get(AppSettings.MONITORING_ALERT_SUMMARY_URL)
+  getOverallAlertSummary (): Observable<AlertSummary[]> {
+    return this.http.get(AppSettings.OVERALL_DATA_URL)
+      .map(this.extractResponse)
+      .catch(this.handleError);
+  }  
+  
+  getServerAlertSummary (): Observable<AlertSummary[]> {
+    return this.http.get(AppSettings.SERVER_DATA_URL)
       .map(this.extractResponse)
       .catch(this.handleError);
   }
-
-
+  
+  getApplicationAlertSummary (): Observable<AlertSummary[]> {
+    return this.http.get(AppSettings.APPLICATION_DATA_URL)
+      .map(this.extractResponse)
+      .catch(this.handleError);
+  }
+  
   private extractResponse(res: Response): AlertSummary[] {
     let body = res.json();
     return body;

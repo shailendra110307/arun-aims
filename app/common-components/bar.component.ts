@@ -1,11 +1,9 @@
 
-import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import * as d3 from 'd3';
 import { saveSvgAsPng } from 'save-svg-as-png';
 import { DatasetService } from '../services/dataset-service';
-
-import { Daterangepicker } from 'ng2-daterangepicker';
-import { DaterangepickerConfig } from 'ng2-daterangepicker';
+import { Daterangepicker, DaterangePickerComponent, DaterangepickerConfig } from 'ng2-daterangepicker';
 import * as moment from 'moment';
 
 @Component({
@@ -20,7 +18,9 @@ import * as moment from 'moment';
 })
 
 export class BarComponent implements OnInit {
-  @ViewChild('barchart') private chartContainer: ElementRef;
+  @ViewChild('chart') private chartContainer: ElementRef;
+  @ViewChild(DaterangePickerComponent) private picker: DaterangePickerComponent;
+  private currentBrushRange: any;
   @Input() public options: any = {};
   private chartId: string;
   private element: any;
@@ -56,12 +56,21 @@ export class BarComponent implements OnInit {
   private bisectDate = d3.bisector((d: any) => d.date).left;
   private saveTextWidth: number = 30;
   private zoomTextWidth: number = 30;
+  private yAxisTickWidth: number = 0;
+  private yAxisLabelPadding: number = -40;
   private brush: any;
   private brushContainer: any;
   private xScaleBrush: any;
   private xAxisBrush: any;
   private marginBrush: any;
   private heightBrush: number;
+  private legendRectSize: number = 12;
+  private legendPaddingBottom: number = 5;
+  private legendHeight: number = this.legendRectSize + this.legendPaddingBottom;
+  private legendSize: number = 0;
+  private legendPositionIsRight: boolean = true;
+  private legendPaddingLeft: number = 5;
+  private uniqueClipPathId = "bar-clip-"+Date.now();
   private subscription: any;
 
   private zoom: any;
@@ -81,6 +90,9 @@ export class BarComponent implements OnInit {
   public ngOnInit() {// we can use this.options
     let native = this.elementRef.nativeElement;
     this.chartId = native.getAttribute("data-id") || "bar-chart-id-" + Date.now();
+    this.element = this.chartContainer.nativeElement;
+    d3.select(this.element).attr("id", this.chartId);
+
     this.type = native.getAttribute("data-type");
     if (this.type === 'grouped') {
       this.typeIsGrouped = true;
@@ -103,14 +115,10 @@ export class BarComponent implements OnInit {
       this.initData = initData;
       this.keys = d3.nest().key((d: any) => d.port).entries(initData);
       this.selectedKey = this.keys[0].key;
-      this.element = this.chartContainer.nativeElement;
 
-      const isDropDown = native.getAttribute("data-dropdown") || "false";
-      if(isDropDown === 'true') {
-        this.createKeyDropdown();
-      }
-      this.run();
+      this.run(true);
     });
+    this.onResize(true);
   }
 
   private selectedDate(value: any) {
@@ -121,7 +129,7 @@ export class BarComponent implements OnInit {
       .attr("transform", (d: any) => "translate(" + (this.xScale(d.date) - this.xScaleOrdinalState.bandwidth() / 2) + ",0)");
     this.container.select(".axis-x").transition().duration(this.duration).call(this.xAxis);
     this.svg.selectAll(".axis text").style('fill', this.options.textColor || "#000");
-    this.container.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
+    this.svg.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
   }
 
   private changeBarType(value: any) {
@@ -132,14 +140,14 @@ export class BarComponent implements OnInit {
     } else {
       this.type = 'grouped';
     }
-    this.run()
+    this.run(false)
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  private run() {
+  private run(isResize:boolean) {
     let data = (this.keys.filter((d: any) => d.key === this.selectedKey))[0];
     this.data = [];
     data.values[0].history.map((d: any) => {
@@ -180,14 +188,22 @@ export class BarComponent implements OnInit {
       "values": this.keys.map((d: any, i: number) => { return { i: i, ip: d.ip, key: d.key, value: 0 }; })
     });
 
-    if (!this.svg && this.data) { this.create(); }
+    if (!this.svg && this.data) { 
+      this.create();
+      if (this.options.isZoom) {
+        this.svg.select(".zoom").call(this.zoom); 
+      }
+    }
     if (this.svg && this.data) { this.update(); }
+    this.onResize(isResize);
   }
 
 
   onResize(event: any) {
     if (this.container) {
-      this.updateSize();
+      if (event){
+        this.updateSize();
+      }
       this.update();
     }
   }
@@ -217,8 +233,8 @@ export class BarComponent implements OnInit {
   }
 
   private createKeyDropdown() {
-    d3.select(this.element).select('.select').remove();
-    var select = d3.select(this.element).append('select')
+    d3.select("#" + this.chartId).select('.select').remove();
+    var select = d3.select("#" + this.chartId).append('select')
       .attr("class", "select");
     var options = select
       .selectAll('option')
@@ -229,14 +245,13 @@ export class BarComponent implements OnInit {
       });
     select.on("change", (e) => {
       this.selectedKey = select.property("value");//select.node().value + "";
-      this.run();
+      this.run(true);
     });
     // var selectedKey = this.keys[this.keys.length - 1].key;
     // select.property('value', selectedKey);
   }
 
   private createSaveDropdown() {
-
     let saveImage = (type: string) => {
       saveSvgAsPng(document.getElementById("bar-svg"), `bar_ + ${Date.now()}.${type}`, { scale: 10 });
     }
@@ -267,54 +282,130 @@ export class BarComponent implements OnInit {
       { name: 'json', callback: saveJson },
       { name: 'csv', callback: saveCsv }
     ];
-
-    d3.select(this.element).select('.save-select').remove();
-    var select = d3.select(this.element).append('select')
-      .style("right", this.margin.right + "px").style("top", "0px").style("left", "initial").style("bottom", "initial")
-      .attr("class", "save-select");
-    var options = select
-      .selectAll('option')
-      .data(saveText).enter()
-      .append('option')
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("text-anchor", "end")
-      .style("fill", this.options.textColor || "#999")
-      .style("cursor", "pointer")
-      .text((d: any) => d.name);
-    select.on("change", (e) => {
-      let name = select.property("value");//select.node().value + "";
-      saveText.map((s: any) => {
-        if (s.name === name) {
-          s.callback(s.name)
-        }
-      })
-    });
-
+    
+    d3.select("#"+this.chartId).selectAll('.export-main a')
+      .on("click", function() {
+        let text = d3.select(this).text();
+        saveText.map((d:any)=>{
+          if (d.name === text){
+            d.callback(d.name);
+          }
+        })
+      });
   }
 
   private createZoomDropdown() {
     let zoomText = ["5M", "15M", "30M", "1H", "2H", "3H", "6H", "12H", "1d", "3d", "7d", "14d", "1m", "2m", "all"];
+    let imageSize:number = 23;
+    let isVisible:boolean = true;
+    let slider: any;
+    let width:number = zoomText.length * 23;
+    width = width>this.width ? this.width : width;
+    let height:number = 45;
+    let radius:number = 14;
+    let hue:Function;
 
-    d3.select(this.element).select('.zoom-select').remove();
-    var select = d3.select(this.element).append('select')
-      .style("left", (this.margin.left + 179) + "px")//150 = daterange-picker + 20 margin
-      .style("top", "0px").style("right", "initial").style("bottom", "initial")
-      .attr("class", "zoom-select");
-    var options = select
-      .selectAll('option')
-      .data(zoomText).enter()
-      .append('option')
+    d3.select("#"+this.chartId).select('.zoom-select').remove();
+    let g:any = d3.select("#"+this.chartId).select("svg").append('g')
       .attr("class", "zoom-select")
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("text-anchor", "start")
-      .style("fill", this.options.textColor || "#999")
+      .attr('transform', `translate(${this.margin.left+imageSize}, ${this.marginBrush.top})`)
+      .style("pointer-events", "bounding-box")
+      .on("mouseenter", (d:any) => {
+        slider.style("display", isVisible ? null : "none");
+        rect.style("display", isVisible ? null : "none");
+        isVisible=!isVisible;
+      })
+      .on("mouseleave", () => {
+        slider.style("display", "none");
+        rect.style("display", "none");
+        isVisible = true;
+      });
+
+    let image = g.append('image')
+      .style("pointer-events", "all")
       .style("cursor", "pointer")
-      .text((d: any) => d);
-    select.on("change", (e: any) => {
-      let z = select.property("value");//select.node().value + "";
-      let xDomain = this.xScale.domain();
+      .style("width", imageSize)
+      .style("height", imageSize)
+      .attr("x", 0)
+      .attr("y", -imageSize-1)
+      .attr("xlink:href", "assets/img/stopwatch.svg")
+      .on("click", () => {
+        slider.style("display", isVisible ? null : "none");
+        rect.style("display", isVisible ? null : "none");
+        isVisible=!isVisible;
+      });
+
+    let rect = g
+      .append('rect')
+      .attr("y", 0)
+      .attr("x", 0)
+      .style("width", width + radius*2-6)
+      .style("height", height)
+      .style("fill", this.options.backgroundColor || "#000")
+      .style("pointer-events", "none")
+      .style("display", "none");
+    
+    let x:any = d3.scaleLinear()
+      .domain([0, zoomText.length-1])
+      .range([0, width])
+      .clamp(true);
+  
+    slider = g.append("g")
+      .style("display", "none")
+      .attr("class", "slider")
+      .attr("transform", "translate(" + (imageSize/2-1) + "," + height / 2 + ")");
+  
+    slider.append("line")
+      .attr("class", "track")
+      .attr("x1", x.range()[0])
+      .attr("x2", x.range()[1])
+      .select(function() {
+        return this.parentNode.appendChild(this.cloneNode(true));
+      })
+      .attr("class", "track-inset")
+      .select(function() {
+        return this.parentNode.appendChild(this.cloneNode(true));
+      })
+      .attr("class", "track-overlay")
+      .call(d3.drag()
+        .on("start.interrupt", function() {
+          slider.interrupt();
+        })
+        .on("start drag", function() {
+          hue(x.invert(d3.event.x));
+        }));
+  
+    slider.insert("g", ".track-overlay")
+      .attr("class", "ticks")
+      .attr("transform", "translate(0," + radius*2 + ")")
+      .selectAll("text")
+      .data(x.ticks(zoomText.length))
+      .enter().append("text")
+      .attr("x", x)
+      .attr("text-anchor", "middle")
+      .text(function(d:any, i:number) {
+        return zoomText[i];
+      });
+  
+    var handle = slider.insert("rect", ".track-overlay")
+      .attr("class", "zoom-handle")
+      .attr("y", -(radius+6)/2)
+      .attr("x", -radius/2)
+      // .attr("rx", 4)
+      // .attr("ry", 4)
+      .attr("width", radius)
+      .attr("height", radius+6);
+      // .attr("x", 0);
+      // .attr("r", radius);
+  
+    hue = (h:any) => {
+      // console.log(Math.round(h));
+      // handle.attr("cx", x(Math.round(h)));
+      handle.attr("x", x(Math.round(h))-radius/2);
+      // g.style("background-color", d3.hsl(h, 0.8, 0.8));
+      let z = zoomText[Math.round(h)];//select.property("value");//select.node().value + "";
+     
+      let xDomain: any = this.xScale.domain();
       let n = +z.replace(/[^0-9\.]+/g, "");
       let s = z.replace(/[^A-Za-z\.]+/g, "");
       if (s === "M") {
@@ -361,37 +452,106 @@ export class BarComponent implements OnInit {
         .transition().duration(this.duration)
         .attr("transform", (d: any) => "translate(" + (this.xScale(d.date) - this.xScaleOrdinalState.bandwidth() / 2) + ",0)");
       this.container.select(".axis-x").transition().duration(this.duration).call(this.xAxis);
-      this.container.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
+      this.svg.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
       this.updateAxisStyle();
-    });
+    }
+     g.selectAll("text")
+      .style("font-size", "11px")//this.options.textSize || "12px")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+      .style("fill", this.options.textColor || "#999")
   }
 
-  private create() {
-    this.margin = { top: 95, bottom: 45, left: 50, right: 50 };
-    this.marginBrush = { top: 40, bottom: 30, left: 50, right: 50 };
-    if (this.options.isLegend) {
-      if (this.options.legendPosition === 'left') {
-        this.margin.left = 150;
-        this.marginBrush.left = 150;
-      } else if (this.options.legendPosition === 'right') {
-        this.margin.right = 150;
-        this.marginBrush.right = 150;
-      }
+private setDatarangepicker(xDomain:any){
+    if (this.picker && this.picker.datePicker){
+      this.picker.datePicker.setStartDate(this.formatDatapicker(xDomain[0]));//06/20/17
+      this.picker.datePicker.setEndDate(this.formatDatapicker(xDomain[1]))
     }
-    this.duration = this.options.duration || 1000;
+  }
+  private create() {
+    this.margin = { top: 80, bottom: 45, left: 55, right: 25};
+    this.marginBrush = { top: 25, bottom: 30, left: 55, right: 25};
+    
+     d3.select("#"+this.chartId).selectAll('.daterange-picker').style("left", this.margin.left+"px");
+
+   
     this.width = (this.element.offsetWidth || 350) - this.margin.left - this.margin.right;
     this.height = (this.element.offsetHeight || 240) - this.margin.top - this.margin.bottom;
     this.heightBrush = (this.element.offsetHeight || 240) - this.height - this.marginBrush.top - this.marginBrush.bottom - this.margin.bottom;
+    this.currentBrushRange = [0, this.width];
+
+    d3.select("#"+this.chartId).select('.daterange-picker')
+    .style("left", this.margin.left+"px ! important")
+    .on("click", () => {
+      let svg:any;
+      d3.selectAll(".daterangepicker").select(".daterangepicker-svg").remove();
+      let daterangepicker:any = d3.selectAll(".daterangepicker");
+      let width:number = this.width > 564 ? 472 : 230;
+      let height:number = 25;
+      let x:any = d3.scaleTime().range([0, width]).domain(this.xScale.domain());
+      let xAxis:any = d3.axisBottom(x).ticks(4);
+      let brush:any = d3.brushX()
+        .extent([[0, 0], [width, height]])
+        .on("brush", ()=>{
+          var s:any = d3.event.selection;
+          let xDomain:any = s.map(x.invert, x);
+          this.setDatarangepicker(xDomain);
+          this.currentBrushRange = [s[0]*this.width/width, s[1]*this.width/width];
+          this.brushContainer.select(".brush").call(this.brush.move, this.currentBrushRange);
+          this.brushContainer.select(".resize--w").attr("x",this.currentBrushRange[0] - 25/2);
+          this.brushContainer.select(".resize--e").attr("x",this.currentBrushRange[1] - 25/2);
+          svg.select(".resize---w").attr("x",s[0] - 25/2);
+          svg.select(".resize---e").attr("x",s[1] - 25/2);
+        });
+
+
+      svg = daterangepicker.append("div")
+        .attr("class", "daterangepicker-svg")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+      
+      let context:any = svg.append("g")
+        .attr("class", "context")
+        .attr("transform", "translate(0,0)"); 
+      context.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+      let range:any = [this.currentBrushRange[0]*width/this.width, this.currentBrushRange[1]*width/this.width];
+      let brashContainer:any = context.append("g")
+        .attr("class", "brush")
+        .call(brush)
+        .call(brush.move, range);//, x.range()
+
+    brashContainer.selectAll(".resize")//resize
+      .data([{type:"w"}, {type:"e"}])
+      .enter()
+      .insert("image", "rect.handle")
+      .attr("class",(d:any)=>{
+        return "resize resize---"+d.type;//d.type==="w" ? -25/2 : this.width - 25/2;
+      })
+      .style("pointer-events", "none")
+      .style("fill", "none")
+      .style("stroke-width", 1)
+      .style("stroke", "#000")
+      .style("width", 25)
+      .style("height", 25)
+      .attr("x", (d:any)=>{
+        return d.type==="w" ? range[0] - 25/2 : range[1] - 25/2;
+      })
+      .attr("y", 0)
+      .attr("xlink:href", "assets/img/dragicon.svg");
+    });
 
     this.xScale = d3.scaleTime().range([0, this.width]);
     this.xScaleOrdinalState = d3.scaleBand().rangeRound([0, this.width]).padding(0.1);
     this.xScaleOrdinal = d3.scaleBand().rangeRound([0, this.xScaleOrdinalState.bandwidth()]).padding(0);
     this.yScale = d3.scaleLinear().range([this.height, 0]);
     this.xScaleBrush = d3.scaleTime().range([0, this.width]);
-    this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data.values.length) ? this.options.dataColors : d3.scaleOrdinal().range(["rgb(0, 136, 191)", "rgb(152, 179, 74)", "rgb(246, 187, 66)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]);
-    this.xAxis = d3.axisBottom(this.xScale);
+     this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data[1].values.length) ? this.options.dataColors : d3.scaleLinear().domain([0, this.data[1].values.length]).range(<any[]>['green', 'blue']);
+    this.xAxis = d3.axisBottom(this.xScale).ticks(6);
     this.xAxisBrush = d3.axisBottom(this.xScaleBrush);
-    this.yAxis = d3.axisLeft(this.yScale);
+    this.yAxis = d3.axisLeft(this.yScale).tickFormat(d3.format(".1f")).ticks(4);
 
 
     this.svg = d3.select(this.element).append('svg')
@@ -408,7 +568,7 @@ export class BarComponent implements OnInit {
     this.tooltip = d3.select(this.element).append('div').attr('class', 'd3-tooltip-wrapper d3-hidden');
 
     this.svg.append("defs").append("clipPath")
-      .attr("id", "clip")
+      .attr("id", this.uniqueClipPathId)
       .append("rect")
       .attr("class", "clip-path")
       .attr("width", this.width)
@@ -424,13 +584,11 @@ export class BarComponent implements OnInit {
       .attr("class", "container-brush")
       .attr('transform', `translate(${this.marginBrush.left}, ${this.marginBrush.top})`);
 
-
     this.container.append('g')
       .attr('class', 'bar-container')
-      .style('clip-path', 'url(#clip)');
+      .style('clip-path', `url(#${this.uniqueClipPathId})`);
     this.brushContainer.append('g')
       .attr('class', 'bar-brush-container');
-
 
     this.container.append('g')
       .attr('class', 'axis axis-x')
@@ -445,47 +603,53 @@ export class BarComponent implements OnInit {
 
     this.container.append("text")
       .attr('class', 'axis-y-label')
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("fill", this.options.textColor || "#000")
-      .attr("text-anchor", "middle")
-      .attr('transform', `translate(${(-30)}, ${(this.height / 2)})rotate(-90)`)
+      .style("font-size", this.options.textSize || "12px")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+      .style("fill", this.options.textColor || "#999")
+       .attr("text-anchor", "middle")
+      .attr('transform', `translate(${this.yAxisLabelPadding}, ${(this.height/2)})rotate(-90)`)
       .text(this.options.yAxisLabel || "");
 
     this.container.append("text")
       .attr('class', 'axis-x-label')
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("fill", this.options.textColor || "#000")
+      .style("font-size", this.options.textSize || "12px")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+      .style("fill", this.options.textColor || "#999")
       .attr("text-anchor", "middle")
-      .attr('transform', `translate(${(this.width / 2)}, ${(this.height + this.margin.bottom - 8)})`)
+      .attr('transform', `translate(${(this.width/2)}, ${(this.height+33)})`)
       .text(this.options.xAxisLabel || "");
 
-    this.container.append("text")
+
+    this.svg.append("text")
       .attr('class', 'date-range')
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("fill", this.options.textColor || "#000")
+      .style("font-size", this.options.textSize || "12px")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+      .style("fill", this.options.textColor || "#999")
       .attr("text-anchor", "start")
-      .attr('transform', `translate(${(0)}, ${(this.height + this.margin.bottom - 8)})`)
+      .attr('transform', `translate(${this.options.isDropdown ? 205 : 105}, 16)`)
       .text("");
+
 
     this.brush = d3.brushX()
       .extent([[0, 0], [this.width, this.heightBrush]])
       .on("brush end", () => {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
         let s = d3.event.selection || this.xScaleBrush.range();
+        this.currentBrushRange = s;
         let xDomain = s.map(this.xScaleBrush.invert, this.xScaleBrush);
+        this.setDatarangepicker(xDomain);
         this.xScale.domain(xDomain);
         this.container.selectAll(".bar-group")
           .transition().duration(this.duration)
-          .attr("transform", (d: any) => "translate(" + (this.xScale(d.date) - this.xScaleOrdinalState.bandwidth() / 2) + ",0)");
+          .attr("transform", (d:any) => "translate(" + (this.xScale(d.date)-this.xScaleOrdinalState.bandwidth()/2) + ",0)");
         this.container.select(".axis-x").transition().duration(this.duration).call(this.xAxis);
-        this.container.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
+        this.svg.select(".date-range").text(this.format(new Date(xDomain[0]))+"   -   "+this.format(new Date(xDomain[1])));
         this.svg.select(".zoom").call(this.zoom.transform, d3.zoomIdentity
           .scale(this.width / (s[1] - s[0]))
           .translate(-s[0], 0));
         this.updateAxisStyle();
+        this.brushContainer.select(".resize--w").attr("x",this.currentBrushRange[0] - 25/2);
+        this.brushContainer.select(".resize--e").attr("x",this.currentBrushRange[1] - 25/2);
       });
 
     this.zoom = d3.zoom()
@@ -496,20 +660,44 @@ export class BarComponent implements OnInit {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return;
         let t = d3.event.transform;
         let xDomain = t.rescaleX(this.xScaleBrush).domain();
+        this.setDatarangepicker(xDomain);
         this.xScale.domain(xDomain);
         this.container.selectAll(".bar-group")
           .transition().duration(this.duration)
-          .attr("transform", (d: any) => "translate(" + (this.xScale(d.date) - this.xScaleOrdinalState.bandwidth() / 2) + ",0)");
+          .attr("transform", (d:any) => "translate(" + (this.xScale(d.date)-this.xScaleOrdinalState.bandwidth()/2) + ",0)");
         this.container.select(".axis-x").transition().duration(this.duration).call(this.xAxis);
-        this.brushContainer.select(".brush").call(this.brush.move, this.xScale.range().map(t.invertX, t));
-        this.container.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
+        this.currentBrushRange = this.xScale.range().map(t.invertX, t);
+        this.brushContainer.select(".brush").call(this.brush.move, this.currentBrushRange);
+        this.svg.select(".date-range").text(this.format(new Date(xDomain[0]))+"   -   "+this.format(new Date(xDomain[1])));
         this.updateAxisStyle();
+        this.brushContainer.select(".resize--w").attr("x",this.currentBrushRange[0] - 25/2);
+        this.brushContainer.select(".resize--e").attr("x",this.currentBrushRange[1] - 25/2);
       });
-
-    this.brushContainer.append("g")
+    
+    // https://bl.ocks.org/Fil/013d52c3e03aa7b90f71db99eace95af
+    // https://bl.ocks.org/mbostock/4349545
+    let brashContainer = this.brushContainer.append("g")
       .attr("class", "brush")
       .call(this.brush)
       .call(this.brush.move, this.xScale.range());
+    brashContainer.selectAll(".resize")//resize
+      .data([{type:"w"}, {type:"e"}])
+      .enter()
+      .insert("image", "rect.handle")
+      .attr("class",(d:any)=>{
+        return "resize resize--"+d.type;//d.type==="w" ? -25/2 : this.width - 25/2;
+      })
+      .style("pointer-events", "none")
+      .style("fill", "none")
+      .style("stroke-width", 1)
+      .style("stroke", "#000")
+      .style("width", 25)
+      .style("height", 25)
+      .attr("x", (d:any)=>{
+        return d.type==="w" ? -25/2 : this.width - 25/2;
+      })
+      .attr("y", 0)
+      .attr("xlink:href", "assets/img/dragicon.svg");
 
     this.legend = this.svg.append('g').attr("class", "legend-container")
 
@@ -524,6 +712,9 @@ export class BarComponent implements OnInit {
 
     this.createSaveDropdown();
     this.createZoomDropdown();
+    if (this.options.isDropdown || false) {
+      this.createKeyDropdown();
+    }
 
     this.svg.selectAll(".selection").style("stroke-width", 0);//in d3.js
     this.svg.selectAll(".overlay").style("fill", "none");//in d3.js
@@ -532,9 +723,18 @@ export class BarComponent implements OnInit {
 
   private updateSize() {
     this.width = (this.element.offsetWidth || 360) - this.margin.left - this.margin.right;
-    //this.height = (this.element.offsetHeight || 240) - this.margin.top - this.margin.bottom;
-    this.heightBrush = (this.element.offsetHeight || 240) - this.height - this.marginBrush.top - this.marginBrush.bottom - this.margin.bottom;
+    this.height = (this.element.offsetHeight || 240) - this.margin.top - this.margin.bottom;
+    this.heightBrush = (this.element.offsetHeight || 240) - this.height -this.marginBrush.top - this.marginBrush.bottom - this.margin.bottom;
+    if (this.width < 100){
+      this.width = 100
+    }
+    this.zoom
+      .translateExtent([[0, 0], [this.width, this.height]])
+      .extent([[0, 0], [this.width, this.height]]);
+    this.brush.extent([[0, 0], [this.width, this.heightBrush]]);
+
     this.svg
+      
       .attr('width', this.width + this.margin.left + this.margin.right)
       .attr('height', this.height + this.margin.top + this.margin.bottom);
     this.svg.select(".zoom")
@@ -542,43 +742,137 @@ export class BarComponent implements OnInit {
       .attr("height", this.height)
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
     this.svg.select(".background-bar-svg")
+      
       .attr('width', this.width + this.margin.left + this.margin.right)
       .attr('height', this.height + this.margin.top + this.margin.bottom);
     this.svg.select(".clip-path")
+      
       .attr("width", this.width)
       .attr("height", this.height);
-    this.svg.select('.save-container')
-      .selectAll(".save-text")
-      .attr("x", (d: any, i: number) => this.width - i * this.saveTextWidth);
-
-    this.container.select(".date-range")
-      .attr('transform', `translate(${(0)}, ${(this.height + this.margin.bottom - 8)})`);
+   
+    this.container
+      .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+    this.brushContainer
+      .attr('transform', `translate(${this.marginBrush.left}, ${this.marginBrush.top})`);
+    this.container.select('.axis-x')
+      .attr('transform', `translate(${0}, ${this.height})`);
     this.container.select(".axis-y-label")
-      .attr("transform", "translate(" + (-30) + "," + (this.height / 2) + ")rotate(-90)");
+      .attr('transform', `translate(${this.yAxisLabelPadding}, ${(this.height/2)})rotate(-90)`);
     this.container.select(".axis-x-label")
-      .attr('transform', `translate(${(this.width / 2)}, ${(this.height + this.margin.bottom - 8)})`);
+      .attr('transform', `translate(${(this.width/2)}, ${(this.height+33)})`);
+
+    d3.select("#"+this.chartId).select('.daterange-picker')
+      .style("left", this.margin.left+"px");
+    // d3.select("#"+this.chartId).select('.save-select')
+    //   .attr('transform', `translate(${this.margin.left+this.width}, ${this.marginBrush.top})`);
+    d3.select("#"+this.chartId).select('.zoom-select')
+       .style("left", (this.margin.left - 1)+"px");
 
     this.xScale.range([0, this.width]);
     this.yScale.range([this.height, 0]);
     this.xScaleBrush.range([0, this.width]);
     this.xScaleOrdinalState.rangeRound([0, this.width]);
-    this.xScaleOrdinal.rangeRound([0, this.xScaleOrdinalState.bandwidth()])
+    this.xScaleOrdinal.rangeRound([0, this.xScaleOrdinalState.bandwidth()]);
+     if (this.options.isLegend) {
+      this.legend
+        .attr('transform', `translate(${this.legendPositionIsRight ? this.margin.left + this.width : this.margin.left }, ${this.legendPositionIsRight ? this.margin.top : this.margin.top + this.height + 20+20})`);
+    }
+    d3.select("#"+this.chartId).select('.select')
+      .style("font-size", this.options.textSize || "12px");
+    //   .style("left", (this.legendPositionIsRight ? this.margin.left + this.width : this.margin.left)+"px").style("top", (this.legendPositionIsRight ? this.margin.top : this.margin.top + this.height + 20+25)+"px").style("right", "initial").style("bottom", "initial");
 
-    this.container.select(".axis-x").call(this.xAxis);
-    this.container.select(".axis-y").call(this.yAxis);
-    this.brushContainer.select(".axis-x-brush").call(this.xAxisBrush);
+
   } // updateSize
 
 
   private update() {
-    let xDomain = d3.extent(this.data, (c: any) => c.date);
-    this.container.select(".date-range").text(this.format(new Date(xDomain[0])) + "   -   " + this.format(new Date(xDomain[1])));
-    this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data.values.length) ? this.options.dataColors : d3.scaleOrdinal().range(["rgb(0, 136, 191)", "rgb(152, 179, 74)", "rgb(246, 187, 66)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]);
-    this.xScaleOrdinalState.domain(this.data.map((d: any) => d.id));
+    d3.select("#"+this.chartId).select('.switch-wrapper-bar')
+      .style("font-size", this.options.textSize || "12px")
+      .style("color", this.options.textColor || "#999")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif');
+    // this.duration = this.options.duration <= 0 ? 0 : 1000;
+    let xDomain = d3.extent(this.data, (c:any) => c.date );
+    this.svg.select(".date-range")
+      .text(this.format(new Date(xDomain[0]))+"   -   "+this.format(new Date(xDomain[1])));
+    this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data[1].values.length) ? this.options.dataColors : d3.scaleLinear().domain([0, this.data[1].values.length]).range(<any[]>['green', 'blue']);
+    this.xScaleOrdinalState.domain(this.data.map((d:any) => d.id));
     this.xScale.domain(xDomain);
     this.xScaleBrush.domain(xDomain);
+    
+if (this.options.isLegend) {
+      let updateLegendRect = this.legend.selectAll('.legend-rect')
+        .data(this.data[1].values);
+      updateLegendRect.exit().remove();
+      this.legend.selectAll('.legend-rect')
+        .attr('x', 0)
+        .attr('y', (d:any, i:number) => ((i * this.legendHeight)) )
+        .attr("width", this.legendRectSize)
+        .attr("height", this.legendRectSize)
+        .style('fill', (d:any, i:number) => this.colors(i));
+      updateLegendRect
+        .enter()
+        .append('rect')
+        .attr('class', 'legend-rect')
+        .attr('x', 0)
+        .attr('y', (d:any, i:number) => ((i * this.legendHeight)) )
+        .attr("width", this.legendRectSize)
+        .attr("height", this.legendRectSize)
+        .style('fill', (d:any, i:number) => this.colors(i));
+    
+      let updateLegendText = this.legend.selectAll('.legend-text')
+        .data(this.data[1].values);
+      updateLegendText.exit().remove();
+      this.legend.selectAll('.legend-text')
+        .attr('x', (d:any, i:number) => (this.legendPaddingLeft + this.legendRectSize))
+        .attr('y', (d:any, i:number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
+        .text((d:any) => d.key)
+      updateLegendText
+        .enter()
+        .append('text')
+        .attr('class', 'legend-text')
+        .style("font-size", this.options.textSize || "12px")
+        .style("text-anchor", "start")
+        .style("fill", this.options.textColor || "#999")
+        .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+        .attr('x', (d:any, i:number) => (this.legendPaddingLeft + this.legendRectSize))
+        .attr('y', (d:any, i:number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
+        .text((d:any) => d.key)
+        .style('cursor', 'pointer')
+        .on("click", (d:any, i:number) => {
+          d._hide = d._hide ? !d._hide : true;
+          this.svg.select(`#line-${i}`).style('opacity', d._hide ? 0 : 1);
+        })
+        .on("mouseover", (d:any, i:number) => {
+          this.svg.select(`#line-${i}`).style('stroke-width', '2px');
+        })
+        .on("mouseout", (d:any, i:number) => {
+          this.svg.select(`#line-${i}`).style('stroke-width', '1px');
+        });
 
-
+        setTimeout(()=>{
+          let bbox = this.legend.node().getBBox();
+          let box = Math.round(bbox.width);// for yAxisLabel
+          if (box > this.legendSize) {
+            this.legendSize = box + 10;
+            if (this.legendSize * 5 > this.width){
+              // this.legendSize = Math.round(bbox.height) + 40;//for tick
+              this.legendPositionIsRight = false;
+              this.margin.bottom = Math.round(bbox.height) + 45;
+              this.margin.right = 25;
+            } else {
+              this.legendPositionIsRight = true;
+              this.margin.right = this.legendSize;
+              this.margin.bottom = 45;
+            }
+            this.onResize(true);
+          }
+        }, 10);
+        this.duration = this.options.duration <= 0 ? 0 : 1000;
+    } else {
+      this.margin.right = 50;
+      this.duration = this.options.duration <= 0 ? 0 : 1000;
+    }
+    
     if (this.typeIsGrouped) {
       let yDomain = [
         d3.min(this.data, function (c: any): any {
@@ -678,59 +972,6 @@ export class BarComponent implements OnInit {
     this.container.select(".axis-x").transition().duration(this.duration).call(this.xAxis);
     this.container.select(".axis-y").transition().duration(this.duration).call(this.yAxis);
     this.brushContainer.select(".axis-x-brush").transition().duration(this.duration).call(this.xAxisBrush);
-
-
-
-    if (this.options.isLegend) {
-      let leftPadding = 0;
-      let topPadding = 45;//for dropdown
-      let rectSize = 10;
-      let xPosition = 0;
-      if (this.options.legendPosition === 'left') {
-        xPosition = 0;
-        d3.select(this.element).select('.select').style("left", 0).style("top", "95px").style("right", "initial").style("bottom", "initial");
-      } else if (this.options.legendPosition === 'right') {
-        xPosition = this.width + this.margin.left - leftPadding;
-        d3.select(this.element).select('.select').style("left", this.width + this.margin.left + "px").style("top", "95px").style("right", "initial").style("bottom", "initial");
-      }
-      let updateLegendRect = this.legend.selectAll('.legend-rect')
-        .data(this.data[1].values);
-      updateLegendRect.exit().remove();
-      this.legend.selectAll('.legend-rect').transition().duration(this.duration)
-        .attr('x', xPosition)
-        .attr('y', (d: any, i: number) => this.margin.top + i * rectSize * 2 + topPadding)
-        .attr('width', rectSize)
-        .attr('height', rectSize)
-        .style('fill', (d: any, i: number) => this.colors(i));
-      updateLegendRect
-        .enter()
-        .append('rect')
-        .attr('class', 'legend-rect')
-        .attr('x', xPosition)
-        .attr('y', (d: any, i: number) => this.margin.top + i * rectSize * 2 + topPadding)
-        .attr('width', rectSize)
-        .attr('height', rectSize)
-        .style('fill', (d: any, i: number) => this.colors(i));
-
-      let updateLegendText = this.legend.selectAll('.legend-text')
-        .data(this.data[1].values);
-      updateLegendText.exit().remove();
-      this.legend.selectAll('.legend-text').transition().duration(this.duration)
-        .attr('x', xPosition + rectSize + 2)
-        .attr('y', (d: any, i: number) => this.margin.top + (i * rectSize * 2) + 9 + topPadding)
-        .text((d: any) => d.key);
-      updateLegendText
-        .enter()
-        .append('text')
-        .attr('class', 'legend-text')
-        .style("font-size", this.options.textColor || "12px")
-        .style("text-anchor", "start")
-        .style("fill", this.options.textColor || "#000")
-        .style("font-family", '"myverdana"')
-        .attr('x', xPosition + rectSize + 2)
-        .attr('y', (d: any, i: number) => this.margin.top + (i * rectSize * 2) + 9 + topPadding)
-        .text((d: any) => d.key);
-    }
 
     this.brushContainer.select(".brush")
       .call(this.brush)

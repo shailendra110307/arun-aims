@@ -107,7 +107,7 @@ export class MonitoringView {
   }
 
   callAlerts() {
-    this.alertSummaryService.getAlertSummary().subscribe(
+    this.alertSummaryService.getOverallAlertSummary().subscribe(
       data => {
         this.pageIndex = 1;
         this.initialAlertList = data;

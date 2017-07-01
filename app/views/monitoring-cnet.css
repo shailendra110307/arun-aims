@@ -1,12 +1,12 @@
-.alert-container .bg-warning{
+.alert-container .Warning{
     background-color: orange;
 }
 
-.alert-container .bg-high{
+.alert-container .High{
     background-color: yellow;
 }
 
-.alert-container .bg-critical{
+.alert-container .Critical{
     background-color: red;
 }
 

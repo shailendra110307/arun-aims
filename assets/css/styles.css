@@ -5310,7 +5310,7 @@ input[type="submit"].btn.btn-mini {
 
 .tooltip.bottom {
     padding: 5px 0;
-    margin-top: 10px
+    margin-top: 3px
 }
 
 .tooltip.left {
@@ -5322,7 +5322,7 @@ input[type="submit"].btn.btn-mini {
     max-width: 200px;
     padding: 8px;
     color: #fff;
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     background-color: #2c3e50;
     -webkit-border-radius: 6px;
@@ -6930,9 +6930,9 @@ legend {
     line-height: 1.4;
 }
 
-#myTab {
+/*#myTab {
     cursor: pointer;
-}
+}*/
 
 .panel {
     margin-bottom: 18px;
@@ -6946,4 +6946,25 @@ legend {
     font-family: myverdana;
     src: local("Helvetica Neue Bold"), local("HelveticaNeue-Bold"), url(../fonts/verdana.ttf);
     font-weight: bold;
+}
+.ng2-pagination .current {
+    padding: 0.175rem 0.25rem !important;
+    /*background: #2199e8;
+    color: #fefefe;*/
+    cursor: pointer;
+    border-radius: 30px;
+}
+.ng2-pagination li {
+    
+    line-height: 10px !important;
+}
+.ng2-pagination a, .ng2-pagination button {
+    cursor: pointer;
+}
+pagination-controls{
+    position: inherit;
+    margin: -9px -9px;
+}
+li[role=presentation]{
+    cursor: pointer;
 }

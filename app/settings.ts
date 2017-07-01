@@ -23,7 +23,10 @@ export class AppSettings {
   public static MONITORING_PROCESSDETAILS_INFO_URL = './mock/processdetails-info.json';
   public static DATA_TOPO_MOCK = './mock/topo-data.json';
   public static PIE_DATA_MOCK = './mock/new-pie-data.json';
-  public static ICON_PATH = './assets/img/'
+  public static DATA_TOPO_TREE_MOCK = './mock/topology-tree.json';
+  public static OVERALL_DATA_URL = './mock/overall_alerts_events.json';
+  public static SERVER_DATA_URL = './mock/server.json';
+  public static APPLICATION_DATA_URL = './mock/application.json';
   // './mock/monitoringip.json';
   // http://api.cnet.com:5000/cluster/openstack/get/ip?host={{host}}&duration={{duration}}
   // 'http://192.168.10.3:5000/mock/vmdata/{{host}}';http://192.168.20.137:5000/alerts?count=10

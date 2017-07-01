@@ -5,5 +5,5 @@
         ip_address: string;
         message: string;
         eventtype: string;
-        time : string;
+        reportingtime: string;
         }

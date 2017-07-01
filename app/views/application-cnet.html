@@ -54,21 +54,24 @@
                                                 <th>Time</th>
                                             </tr>
                                             <tr>
-                                                <th><input type="text" class="alert-filter" name="ip_address" [(ngModel)]="filterAlert.ip_address" placeholder="Host"></th>
-                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filterAlert.message" placeholder="Description"></th>
-                                                <th><input type="text" class="alert-filter" name="severity" [(ngModel)]="filterAlert.severity" placeholder="Priority"></th>
-                                                <th><input type="text" class="alert-filter" name="reportingtime" [(ngModel)]="filterAlert.reportingtime" placeholder="Time"></th>
-                                            </tr>                                            
+                                                <th><input type="text" class="alert-filter" name="ip" placeholder="Host"></th>
+                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filterAlert.message"
+                                                        placeholder="Description"></th>
+                                                <th><input type="text" class="alert-filter" name="severity" [(ngModel)]="filterAlert.severity"
+                                                        placeholder="Priority"></th>
+                                                <th><input type="text" class="alert-filter" name="reportingtime" [(ngModel)]="filterAlert.reportingtime"
+                                                        placeholder="Time"></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let alert of alertList | alertfilter:filterAlert | paginate: { itemsPerPage: 5, currentPage: p9, id:'p9' }">
                                                 <td>
-                                                    <a href="javascript:void(0)" (click)="getAlertPage(alert.ip_address)">
-                                                        <u>{{alert.ip_address || alert.message}}</u>
+                                                    <a href="javascript:void(0)">
+                                                        <u>{{ip}}</u>
                                                     </a>
                                                 </td>
                                                 <td>{{alert.message}}</td>
-                                                <td [ngClass]="alert.classname">{{alert.severity}}</td>
+                                                <td [ngClass]="alert.severity">{{alert.severity}}</td>
                                                 <td>{{alert.reportingtime}}</td>
                                             </tr>
                                         </tbody>
@@ -98,22 +101,25 @@
                                                 <th>Time</th>
                                             </tr>
                                             <tr>
-                                                <th><input type="text" class="alert-filter" name="ip_address" [(ngModel)]="filterEvent.ip_address" placeholder="Host"></th>
-                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filterEvent.message" placeholder="Description"></th>
-                                                <th><input type="text" class="alert-filter" name="eventtype" [(ngModel)]="filterEvent.eventtype" placeholder="Event Type"></th>
-                                                <th><input type="text" class="alert-filter" name="time" [(ngModel)]="filterEvent.time" placeholder="Time"></th>
+                                                <th><input type="text" class="alert-filter" name="ip" placeholder="Host"></th>
+                                                <th><input type="text" class="alert-filter" name="message" [(ngModel)]="filterEvent.message"
+                                                        placeholder="Description"></th>
+                                                <th><input type="text" class="alert-filter" name="eventtype" [(ngModel)]="filterEvent.eventtype"
+                                                        placeholder="Event Type"></th>
+                                                <th><input type="text" class="alert-filter" name="reportingtime" [(ngModel)]="filterEvent.reportingtime"
+                                                        placeholder="Time"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let event of eventList | alertfilter:filterEvent | paginate: { itemsPerPage: 5, currentPage: p10, id:'p10' }">
                                                 <td>
-                                                    <a href="javascript:void(0)" (click)="getEventPage(event.ip_address)">
-                                                        <u>{{event.ip_address}}</u>
+                                                    <a href="javascript:void(0)">
+                                                        <u>{{ip}}</u>
                                                     </a>
                                                 </td>
                                                 <td>{{event.message}}</td>
                                                 <td>{{event.eventtype}}</td>
-                                                <td>{{event.time}}</td>
+                                                <td>{{event.reportingtime}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -132,7 +138,7 @@
                                             <h5>CPU Usage</h5>
                                         </div>
                                         <div class="panel-body">
-                                            <line-chart data-type="stacked" data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false">
+                                            <line-chart data-id="applicationLine1" data-type="stacked" data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false">
                                             </line-chart>
                                         </div>
                                     </div>
@@ -145,7 +151,7 @@
                                         <div class="panel-body  text-center">
                                             <!--<h6>Table</h6>-->
                                             <!--<pie-chart data-type="pie" data-subscribe="pieDataset" [options]="pieOptions"></pie-chart>-->
-                                            <bar-chart data-type="bar" data-subscribe="barDataset" [options]="barOptions"> </bar-chart>
+                                            <bar-chart data-type="bar" data-id="applicationBar1" data-subscribe="barDataset" [options]="barOptions"> </bar-chart>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +163,7 @@
                                         <h5 class="text-center">Response Time</h5>
                                     </div>
                                     <div class="panel-body  text-center">
-                                        <area-chart data-type="area" data-subscribe="areaDataset" [options]="areaOptions"> </area-chart>
+                                        <area-chart data-type="area" data-id="applicationArea1" data-subscribe="areaDataset" [options]="areaOptions"> </area-chart>
                                     </div>
                                 </div>
                                 </div>
@@ -205,7 +211,7 @@
                                                     <h5>Request Time</h5>
                                                 </div>
                                                 <div class="panel-body  text-center ">
-                                                    <line-chart data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false"></line-chart>
+                                                    <line-chart data-id="applicationLine2" data-subscribe="lineDataset" [options]="lineOptions" data-dropdown="false"></line-chart>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,7 +221,7 @@
                                                     <h5>Network Usage</h5>
                                                 </div>
                                                 <div class="panel-body  text-center ">
-                                                    <area-chart data-type="stacked" data-subscribe="barDataset" [options]="barOptions" data-dropdown="false"></area-chart>
+                                                    <area-chart data-type="stacked" data-subscribe="barDataset" data-id="applicationArea2" [options]="barOptions" data-dropdown="false"></area-chart>
                                                 </div>
                                             </div>
                                         </div>

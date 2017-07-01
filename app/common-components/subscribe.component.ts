@@ -55,7 +55,7 @@ export class SubscribeComponent implements OnInit {
   public lineOptions2:any = { 
     'backgroundColor': '#000',//Text font inside the charts
     'textSize': "12px",
-    'textColor':'#999',
+    'textColor': '#999',
     'isLegend': true,
     'legendPosition': 'right',//left | right 
     'isZoom': true,

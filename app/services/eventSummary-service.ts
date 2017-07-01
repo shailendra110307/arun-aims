@@ -16,23 +16,27 @@ export class EventSummaryService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  getEventSummary (): Observable<EventSummary[]> {
-    return this.http.get(AppSettings.MONITORING_EVENT_SUMMARY_URL)
+  getOverallEventSummary (): Observable<EventSummary[]> {
+    return this.http.get(AppSettings.OVERALL_DATA_URL)
       .map(this.extractResponse)
       .catch(this.handleError);
   }
 
+  getServerEventSummary (): Observable<EventSummary[]> {
+    return this.http.get(AppSettings.SERVER_DATA_URL)
+      .map(this.extractResponse)
+      .catch(this.handleError);
+  }
+
+  getApplicationEventSummary (): Observable<EventSummary[]> {
+    return this.http.get(AppSettings.APPLICATION_DATA_URL)
+      .map(this.extractResponse)
+      .catch(this.handleError);
+  }
 
   private extractResponse(res: Response): EventSummary[] {
     let body = res.json();
-    return body.events.map(function (event: any) {
-      const transformedEvent = new EventSummary();
-      transformedEvent.ip_address = event.ip_address;
-      transformedEvent.message = event.message;
-      transformedEvent.time = event.time;
-      transformedEvent.eventtype = event.eventtype;
-      return transformedEvent;
-    });
+    return body;
   }
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure

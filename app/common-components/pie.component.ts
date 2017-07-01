@@ -50,9 +50,11 @@ export class PieComponent implements OnInit {
     .value((d: any) => d.value);
   private legendContainer: any;
   private legendRectSize: number = 12;
-  private legendpacingBottom: number = 10;
-  private legendpacingLeft: number = 10;
-  private legendHeight: number = this.legendRectSize + this.legendpacingBottom;
+  private legendPositionIsRight: boolean = true;
+  private legendPaddingBottom: number = 5;
+  private legendPaddingLeft: number = 5;
+  private imageSize: number = 23;
+  private legendHeight: number = this.legendRectSize + this.legendPaddingBottom;
   private enteringArcs: any;
   private labelsLine: any;
   private labelsCircle: any;
@@ -61,6 +63,7 @@ export class PieComponent implements OnInit {
   private outerRadius: any;
   private labelRadius: any;
   private subscription: any;
+  private radius: number;
 
 
   constructor(private datasetService: DatasetService, private elementRef: ElementRef) {
@@ -69,6 +72,8 @@ export class PieComponent implements OnInit {
   public ngOnInit() {// we can use this.options
     let native = this.elementRef.nativeElement;
     this.chartId = native.getAttribute("data-id") || "chart-id-" + Date.now();
+    this.element = this.chartContainer.nativeElement;
+    d3.select(this.element).attr("id", this.chartId);
     this.type = native.getAttribute("data-type");
     if (this.type === 'pie') {
       this.typeIsPie = true;
@@ -91,8 +96,6 @@ export class PieComponent implements OnInit {
       if (!initData) {
         return;
       }
-      this.element = this.chartContainer.nativeElement;
-      d3.select(this.element).attr("id", this.chartId);
       if (initData) {
         this.isData = true;
         d3.select("#" + this.chartId).selectAll('.message').remove();
@@ -107,7 +110,7 @@ export class PieComponent implements OnInit {
       this.data = initData;
       // this.keys = d3.nest().key((d:any) => d.port).entries(initData);
       // this.selectedKey = this.keys[0].key;
-      this.element = this.chartContainer.nativeElement;
+      
       if (!this.isData) {
         d3.select("#" + this.chartId).append('p')
           .attr('class', 'message')
@@ -121,10 +124,10 @@ export class PieComponent implements OnInit {
       if (this.svg && this.isData) {
         this.d3Pie.padAngle(this.options.padAngle || 0)
         this.data = this.d3Pie(this.initData);//data
-        this.update();
+        this.onResize(true);
       }
       // this.createKeyDropdown();
-      this.run();
+      this.run(true);
     });
   }
 
@@ -136,17 +139,17 @@ export class PieComponent implements OnInit {
       this.innerRadius = 0; // / 5.3
     } else {
       this.type = 'pie';
-      this.innerRadius = Math.round(this.widthWithoutLegend / (this.options.innerRadiusDivider || 5.0)); // / 5.3
+      this.innerRadius = Math.round(this.radius / (this.options.innerRadiusDivider || 5.0)); // / 5.3
     }
     this.d3Arc
       .cornerRadius(this.options.cornerRadius || 0)
       .innerRadius(this.innerRadius)
       .outerRadius(this.outerRadius);
 
-    this.run();
+    this.run(false);
   }
 
-  private run() {
+  private run(isResize:boolean) {
     this.data = this.d3Pie(this.initData);//data
     if (!this.svg && this.data) {
       this.d3Pie.padAngle(this.options.padAngle || 0);
@@ -154,13 +157,15 @@ export class PieComponent implements OnInit {
       this.create();
       this.update();
     }
-    if (this.svg && this.data) { this.update(); }
+   this.onResize(isResize);
   }
 
 
   onResize(event: any) {
     if (this.svg && this.data) {
-      this.updateSize();
+      if (event){
+        this.updateSize();
+      }
       this.update();
     }
   }
@@ -225,78 +230,42 @@ export class PieComponent implements OnInit {
       { name: 'csv', callback: saveCsv }
     ];
 
-    d3.select("#" + this.chartId).select('.save-select').remove();
-    var select = d3.select("#" + this.chartId).append('select')
-      .style("right", this.margin.right + "px").style("top", "0px").style("left", "initial").style("bottom", "initial")
-      .attr("class", "save-select");
-    var options = select
-      .selectAll('option')
-      .data(saveText).enter()
-      .append('option')
-      .style("font-size", this.options.textColor || "12px")
-      .style("font-family", '"myverdana"')
-      .style("text-anchor", "end")
-      .style("fill", this.options.textColor || "#999")
-      .style("cursor", "pointer")
-      .text((d: any) => d.name);
-    select.on("change", (e) => {
-      let name = select.property("value");//select.node().value + "";
-      saveText.map((s: any) => {
-        if (s.name === name) {
-          s.callback(s.name);
-        }
-      })
-    });
+    d3.select("#"+this.chartId).selectAll('.export-main a')
+      .on("click", function() {
+        let text = d3.select(this).text();
+        saveText.map((d:any)=>{
+          if (d.name === text){
+            d.callback(d.name);
+          }
+        })
+      });
 
   }
 
   private create() {
     this.margin = { top: 0, bottom: 0, left: 0, right: 0 };
-    this.duration = this.options.duration || 1000;
+     this.duration = this.options.duration <= 0 ? 0 : 1000;
     if (this.options.isLegend) {
       this.legendWidth = 100;
     }
-    this.widthWithoutLegend = Math.min((this.element.offsetWidth || 200) - this.legendWidth, this.element.offsetHeight || 200) - this.margin.left - this.margin.right;
-    this.width = this.widthWithoutLegend + this.legendWidth + 45;//this.width > 500 ? 2 * this.width / 3 : this.width;
-    this.height = this.widthWithoutLegend; //let box = legend.node().getBBox();
-    // console.log(this.options.dataColors.range().length, !!this.options.dataColors, this.options.dataColors.range().length >= this.data.length);
-    // this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data.length) ? this.options.dataColors : d3.scaleLinear().domain([0, this.data.length]).range(<any[]>['red', 'blue']);
-
-    this.outerRadius = Math.round(this.widthWithoutLegend / (this.options.outerRadiusDivider || 2.7)); // / 2.65
-    this.labelRadius = Math.round(this.widthWithoutLegend / (this.options.labelRadiusDivider || 2.2)); // / 2.4
-
-    if (this.typeIsPie) {
-      this.innerRadius = Math.round(this.widthWithoutLegend / (this.options.innerRadiusDivider || 5.0)); // / 5.3
-    } else {
-      this.innerRadius = 0; // / 5.3
-    }
-
-    this.d3Arc
-      .cornerRadius(this.options.cornerRadius || 0)
-      .innerRadius(this.innerRadius)
-      .outerRadius(this.outerRadius);
 
     this.svg = d3.select("#" + this.chartId).append('svg')
-      .attr('id', 'pie-svg')
-      .attr('width', this.width + this.margin.left + this.margin.right)
-      .attr('height', this.height + this.margin.top + this.margin.bottom);
-
+      .attr('id', 'pie-svg');
+     
     this.svg.append("rect")
       .attr('class', 'background-pie-svg')
-      .style('fill', 'transparent')
-      .attr('width', this.width + this.margin.left + this.margin.right)
-      .attr('height', this.height + this.margin.top + this.margin.bottom);
-
+      .style('fill', this.options.backgroundColor || '#fff');
+     
     this.tooltip = d3.select("#" + this.chartId).append('div').attr('class', 'd3-tooltip-wrapper d3-hidden');
 
     this.container = this.svg.append('g')
-      .attr('class', 'container')
-      .attr("transform", "translate(" + (this.height / 2 + (this.options.legendPosition === 'left' ? this.legendWidth : 0)) + "," + (this.height / 2) + ")");
+      .attr('class', 'container');
+      //.attr("transform", "translate(" + (this.height / 2 + (this.options.legendPosition === 'left' ? this.legendWidth : 0)) + "," + (this.height / 2) + ")");
 
     this.artContainer = this.container.append('g').attr('class', 'art-container');
     this.labelContainer = this.container.append('g').attr('class', 'labels-container');
     // this.legend = this.svg.append('g').attr("class", "legend-container") 
-    this.legendContainer = this.svg.append('g').attr('class', 'legend-container"');
+    this.legendContainer = this.svg.append('g').attr('class', 'legend-container');
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence
     let filter = this.artContainer.append('defs').append('filter').attr('id', 'glow'),
       feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation', '1.0').attr('result', 'coloredBlur'),
@@ -311,39 +280,61 @@ export class PieComponent implements OnInit {
 
 
   private updateSize() {
-    this.margin = { top: 0, bottom: 0, left: 0, right: 0 };
-    this.duration = this.options.duration || 1000;
-    this.widthWithoutLegend = Math.min((this.element.offsetWidth || 200) - this.legendWidth, this.element.offsetHeight || 200) - this.margin.left - this.margin.right;
-    this.width = this.widthWithoutLegend + this.legendWidth;//this.width > 500 ? 2 * this.width / 3 : this.width;
-    this.height = this.widthWithoutLegend; //let box = legend.node().getBBox();
-    this.outerRadius = Math.round(this.widthWithoutLegend / (this.options.outerRadiusDivider || 2.7)); // / 2.65
-    this.labelRadius = Math.round(this.widthWithoutLegend / (this.options.labelRadiusDivider || 2.2)); // / 2.4
-
+    this.margin = { top: 0, bottom: 0, left: 0, right: 0};
+    this.duration = this.options.duration <= 0 ? 0 : 1000;
+    this.width = (this.element.offsetWidth || 200) - this.margin.left - this.margin.right;
+    this.height = (this.element.offsetHeight || 200) - this.margin.top - this.margin.bottom;
+    if (this.width < this.height){
+      this.legendPositionIsRight = false;
+    } else {
+      this.legendPositionIsRight = true;
+    }
+    this.radius = Math.min(this.width - (this.legendPositionIsRight ? this.legendWidth : 0), this.height - (this.legendPositionIsRight ? 0 : this.legendWidth));
+    this.outerRadius = Math.round(this.radius / (this.options.outerRadiusDivider || 2.7)); // / 2.65
+    this.labelRadius = Math.round(this.radius / (this.options.labelRadiusDivider || 2.2)); // / 2.4
+    
     this.svg
       .attr('width', this.width + this.margin.left + this.margin.right)
       .attr('height', this.height + this.margin.top + this.margin.bottom);
     this.container
-      .attr("transform", "translate(" + (this.height / 2 + (this.options.legendPosition === 'left' ?
-        this.legendWidth : 0)) + "," + (this.height / 2) + ")");
+      .attr("transform", "translate(" + (this.radius / 2 + 0) + "," + (this.radius / 2) + ")");
     this.svg.select(".background-pie-svg")
       .attr('width', this.width + this.margin.left + this.margin.right)
       .attr('height', this.height + this.margin.top + this.margin.bottom);
     this.svg.select(".clip-path")
       .attr("width", this.width)
       .attr("height", this.height);
-    this.svg.select('.save-container')
-      .selectAll(".save-text")
-      .attr("x", (d: any, i: number) => this.width - i * this.saveTextWidth);
+    if (this.options.isLegend) {
+      this.legendContainer.attr("transform", (d:any, i:number) => {
+        return 'translate(' + (this.legendPositionIsRight ? (this.width - this.legendWidth+this.legendRectSize) : (this.radius/2-this.outerRadius)) + ',' + (this.legendPositionIsRight ? (this.radius/2-this.outerRadius) : (this.labelRadius*2+20))  + ')';//((this.height - this.data.length * this.legendHeight)/2)
+      });
+    }
 
   } // updateSize
 
 
   private update() {
+     d3.select("#"+this.chartId).select('.switch-wrapper-pie')
+      .style("font-size", this.options.textSize || "12px")
+      .style("color", this.options.textColor || "#999")
+      .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif');
     let that: this = this;
-    this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data.length) ? this.options.dataColors : d3.scaleOrdinal().range(["rgb(0, 136, 191)", "rgb(152, 179, 74)", "rgb(246, 187, 66)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]);
+    this.colors = (!!this.options.dataColors && this.options.dataColors.range().length >= this.data.values.length) ? this.options.dataColors : d3.scaleLinear().domain([0, this.data.values.length]).range(<any[]>['blue', 'green']);
+
+this.width = (this.element.offsetWidth || 200) - this.margin.left - this.margin.right;
+    this.height = (this.element.offsetHeight || 200) - this.margin.top - this.margin.bottom;
+    if (this.width < this.height){
+      this.legendPositionIsRight = false;
+    } else {
+      this.legendPositionIsRight = true;
+    }
+    this.radius = Math.min(this.width - (this.legendPositionIsRight ? this.legendWidth : 0), this.height - (this.legendPositionIsRight ? 0 : this.legendWidth));
+    this.outerRadius = Math.round(this.radius / (this.options.outerRadiusDivider || 2.7)); // / 2.65
+    this.labelRadius = Math.round(this.radius / (this.options.labelRadiusDivider || 2.2)); // / 2.4
+
 
     if (this.typeIsPie) {
-      this.innerRadius = Math.round(this.widthWithoutLegend / (this.options.innerRadiusDivider || 5.0)); // / 5.3
+       this.innerRadius = Math.round(this.radius / (this.options.innerRadiusDivider || 5.0)); // / 5.3
     } else {
       this.innerRadius = 0; // / 5.3
     }
@@ -353,11 +344,59 @@ export class PieComponent implements OnInit {
       .innerRadius(this.innerRadius)
       .outerRadius(this.outerRadius);
 
-    this.legendContainer.transition().duration(this.duration).attr("transform", (d: any, i: number) => {
-      return 'translate(' + (this.options.legendPosition === 'left' ?
-        this.legendWidth / 4 : this.labelRadius * 2 + this.legendWidth / 4 + 20) + ',' +
-        (this.height - this.data.length * this.legendHeight) / 2 + ')';
-    });
+   
+    if (this.options.isLegend) {
+        let updateLegendRect = this.legendContainer.selectAll('.legend-rect')
+          .data(this.data);
+        updateLegendRect.exit().remove();
+        this.legendContainer.selectAll('.legend-rect').transition().duration(this.duration)
+          .attr('x', 0)
+          .attr('y', (d:any, i:number) => ((i * this.legendHeight)) )
+          .attr("width", this.legendRectSize)
+          .attr("height", this.legendRectSize)// rx: legendRectSize,// ry: legendRectSize
+          .style("fill", (d:any, i:number) => this.colors(i))
+          .style('stroke', (d:any, i:number) => this.colors(i));  
+        updateLegendRect
+          .enter()
+          .append('rect')
+          .attr("id", (d:any, i:number) => "legend-rect-" + i)
+          .attr('class', 'legend-rect')
+          .attr('x', 0)
+          .attr('y', (d:any, i:number) => ((i * this.legendHeight)) )
+          .attr("width", this.legendRectSize)
+          .attr("height", this.legendRectSize)// rx: legendRectSize,// ry: legendRectSize
+          .style("fill", (d:any, i:number) => this.colors(i))
+          .style('stroke', (d:any, i:number) => this.colors(i));
+  
+        let updateLegendText = this.legendContainer.selectAll('.legend-text')
+          .data(this.data);
+        updateLegendText.exit().remove();
+        this.legendContainer.selectAll('.legend-text').transition().duration(this.duration)
+          .attr('x', (d:any, i:number) => (this.legendPaddingLeft + this.legendRectSize))
+          .attr('y', (d:any, i:number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
+          .text((d:any) => d.data.label); 
+        updateLegendText
+          .enter()
+          .append('text')
+          .attr("id", (d:any, i:number) => "legend-text-" + i)
+          .attr('class', 'legend-text')
+          .style("font-size", this.options.textSize || "12px")
+          .style("text-anchor", "start")
+          .style("fill", this.options.textColor || "#999")
+          .style("font-family", '"Helvetica Neue",Helvetica,Arial,sans-serif')
+          .attr('x', (d:any, i:number) => (this.legendPaddingLeft + this.legendRectSize))
+          .attr('y', (d:any, i:number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
+          .text((d:any) => d.data.label);
+          
+          setTimeout(()=>{
+            let box = Math.round(this.legendContainer.node().getBBox().width);// for yAxisLabel
+            if (box > this.legendWidth) {
+              this.legendWidth = box + 10;
+              this.onResize(true);
+            }
+          }, 10);
+    }
+
 
 
     // Let's start drawing the arcs.
@@ -541,7 +580,7 @@ export class PieComponent implements OnInit {
       .append('text')
       .attr("class", "label-text")
       .attr("id", (d: any, i: number) => "label-text-" + i)
-      .style("font-size", this.options.textColor || "12px")
+      .style("font-size", this.options.textSize || "12px")
       .style("font-family", '"myverdana"')
       .style("fill", this.options.textColor || "#000")
       .attr("x", (d: any, i: number) => {
@@ -617,7 +656,7 @@ export class PieComponent implements OnInit {
         // that.labelContainer.selectAll('.label-line-2').transition().duration(0)
         //   .attr("class", "label-line-2")
         //   .attr("id", (d:any, i:number) => "label-line-2-" + i)
-        //   .style("stroke", that.options.textColor || "#000")
+        //   .style("stroke", that.options.textColor || "#fff")
         //   .attr("x1", (d:any, i:number) => that.labelsLine._groups[0][i].x2.baseVal.value)
         //   .attr("y1", (d:any, i:number) => that.labelsLine._groups[0][i].y2.baseVal.value)
         //   .attr("x2", (d:any, i:number) => {
@@ -634,7 +673,7 @@ export class PieComponent implements OnInit {
         //   .append('line')
         //   .attr("class", "label-line-2")
         //   .attr("id", (d:any, i:number) => "label-line-2-" + i)
-        //   .style("stroke", that.options.textColor || "#000")
+        //   .style("stroke", that.options.textColor || "#fff")
         //   .attr("x1", (d:any, i:number) => that.labelsLine._groups[0][i] ? that.labelsLine._groups[0][i].x2.baseVal.value : 0)
         //   .attr("y1", (d:any, i:number) => that.labelsLine._groups[0][i] ? that.labelsLine._groups[0][i].y2.baseVal.value : 0)
         //   .attr("x2", (d:any, i:number) => {
@@ -657,61 +696,20 @@ export class PieComponent implements OnInit {
     setTimeout(relax, this.duration);
 
     let setTooltip = (d: any) => {
+        // console.log(d3.mouse(this.svg.node()));
+        let coordinates = d3.mouse(that.svg.node());
       that.tooltip.classed('d3-hidden', false)
         .html(`<div class="d3-tooltip-content"><p class="d3-date">tooltip</p><p>${d.data.tooltip}</p></div>`);
 
       //let box = that.legendContainer.node().getBBox();
       that.tooltip
-        .style("left", 0 + "px")
+        .style("left", (coordinates[0]+10) + "px")
         // .style("left", (this.labelRadius * 2 + 130 + box.width) + "px")
         // .style("width", (this.width - (this.labelRadius * 2 + 130 + box.width)) + "px")
-        .style("top", 0 + "px");
+        .style("top", (coordinates[1]+10) + "px");
     }
 
-    if (this.options.isLegend) {
-      let updateLegendRect = this.legendContainer.selectAll('.legend-rect')
-        .data(this.data);
-      updateLegendRect.exit().remove();
-      this.legendContainer.selectAll('.legend-rect').transition().duration(this.duration)
-        .attr('x', (d: any, i: number) => (0))
-        .attr('y', (d: any, i: number) => ((i * this.legendHeight)))
-        .attr("width", this.legendRectSize)
-        .attr("height", this.legendRectSize)// rx: legendRectSize,// ry: legendRectSize
-        .style("fill", (d: any, i: number) => this.colors(i))
-        .style('stroke', (d: any, i: number) => this.colors(i));
-      updateLegendRect
-        .enter()
-        .append('rect')
-        .attr("id", (d: any, i: number) => "legend-rect-" + i)
-        .attr('class', 'legend-rect')
-        .attr('x', (d: any, i: number) => (0))
-        .attr('y', (d: any, i: number) => ((i * this.legendHeight)))
-        .attr("width", this.legendRectSize)
-        .attr("height", this.legendRectSize)// rx: legendRectSize,// ry: legendRectSize
-        .style("fill", (d: any, i: number) => this.colors(i))
-        .style('stroke', (d: any, i: number) => this.colors(i));
-
-      let updateLegendText = this.legendContainer.selectAll('.legend-text')
-        .data(this.data);
-      updateLegendText.exit().remove();
-      this.legendContainer.selectAll('.legend-text').transition().duration(this.duration)
-        .attr('x', (d: any, i: number) => (this.legendpacingLeft + this.legendRectSize))
-        .attr('y', (d: any, i: number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
-        .text((d: any) => d.data.label);
-      updateLegendText
-        .enter()
-        .append('text')
-        .attr("id", (d: any, i: number) => "legend-text-" + i)
-        .attr('class', 'legend-text')
-        .style("font-size", this.options.textColor || "12px")
-        .style("text-anchor", "start")
-        .style("fill", this.options.textColor || "#000")
-        .style("font-family", '"myverdana"')
-        .attr('x', (d: any, i: number) => (this.legendpacingLeft + this.legendRectSize))
-        .attr('y', (d: any, i: number) => (5 + this.legendRectSize / 2 + (i * this.legendHeight)))
-        .text((d: any) => d.data.label);
-    }
-
+    
 
     this.svg.selectAll("#pie-svg text")
       .style("font-family", '"myverdana"');

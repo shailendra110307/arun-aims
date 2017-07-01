@@ -7,15 +7,49 @@
 .d3-area-chart .daterange-picker {
     position: absolute;
     top: 0px;
-    left: 50px;
-    width: 160px;
-    height: 28px;
-    border: 1px solid #999;
+    left: 55px;
+    width: 23px;
+    /*width: 150px;*/
+    height: 23px;
+    border: 0px solid #000;
+    cursor: pointer;
     /*margin: 10px 50px;*/
 }
 
+.d3-area-chart .zoom-handle,
+.d3-area-chart .track,
+.d3-area-chart .track-inset,
+.d3-area-chart .track-overlay {
+    /*stroke-linecap: round;*/
+    rx: 4px;
+    ry: 4px;
+}
+
+.d3-area-chart .track {
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: 14px;
+}
+
+.d3-area-chart .track-inset {
+    stroke: #008BFF;
+    stroke-width: 12px;
+}
+
+.d3-area-chart .track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    cursor: crosshair;
+}
+
+.d3-area-chart .zoom-handle {
+    fill: #bbb;
+    stroke: #000;
+    stroke-opacity: 0.5;
+    stroke-width: 0.5px;
+}
+
 .d3-area-chart .select,
-.d3-area-chart .save-select,
 .d3-area-chart .zoom-select {
     position: absolute;
     bottom: 0px;
@@ -28,9 +62,13 @@
 
 .d3-area-chart .select {
     width: 100px;
+    top: 0;
+    left: 100px;
+    height: 23px;
+    padding: 1px;
+    outline: none;
 }
 
-.d3-area-chart .save-select,
 .d3-area-chart .zoom-select {
     width: 80px;
 }
@@ -74,4 +112,283 @@
     color: #000;
     top: 40%;
     right: 50%;
+}
+
+
+/*daterangepicker-svg*/
+
+.daterangepicker-svg {
+    clear: both;
+    margin: 4px;
+}
+
+.daterangepicker-svg .selection {
+    stroke-width: 0px;
+}
+
+
+/*.daterangepicker-svg .brush {
+    fill: #ffa700;
+}*/
+
+
+/*.daterangepicker-svg .handle--e,
+.daterangepicker-svg .handle--w {
+    fill: #357ebd;
+}*/
+
+
+/*export*/
+
+.aims-export-menu li {
+    cursor: pointer;
+}
+
+.aims-export-menu {
+    position: absolute;
+    z-index: 2;
+    opacity: 0.5;
+    color: #000;
+}
+
+.aims-export-menu.active {
+    opacity: 1;
+}
+
+.aims-export-menu-top-left>ul>li>ul:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 100%;
+    z-index: 1000;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-right: 7px solid #fff;
+    border-bottom: 7px solid transparent;
+}
+
+.aims-export-menu-top-left>ul>li>ul>li:first-child>a:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 100%;
+    z-index: 1001;
+    border-top: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid #e2e2e2;
+    border-bottom: 8px solid transparent;
+}
+
+.aims-export-menu-top-right>ul>li>ul:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 100%;
+    z-index: 1000;
+    border-top: 7px solid transparent;
+    border-left: 7px solid #fff;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.aims-export-menu-top-right>ul>li>ul>li:first-child>a:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 100%;
+    z-index: 1001;
+    border-top: 8px solid transparent;
+    border-left: 8px solid #e2e2e2;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.aims-export-menu-bottom-left>ul>li>ul:after {
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    right: 100%;
+    z-index: 1000;
+    border-top: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-right: 7px solid #fff;
+    border-bottom: 7px solid transparent;
+}
+
+.aims-export-menu-bottom-left>ul>li>ul>li:last-child>a:after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    right: 100%;
+    z-index: 1001;
+    border-top: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid #e2e2e2;
+    border-bottom: 8px solid transparent;
+}
+
+.aims-export-menu-bottom-right>ul>li>ul:after {
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    left: 100%;
+    z-index: 1000;
+    border-top: 7px solid transparent;
+    border-left: 7px solid #fff;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.aims-export-menu-bottom-right>ul>li>ul>li:last-child>a:after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 100%;
+    z-index: 1001;
+    border-top: 8px solid transparent;
+    border-left: 8px solid #e2e2e2;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.aims-export-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aims-export-menu li {
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+
+.aims-export-menu li>ul {
+    position: absolute;
+    display: none;
+    border: 1px solid #e2e2e2;
+    margin-top: -1px;
+    background: #fff;
+}
+
+.aims-export-menu li>a {
+    position: relative;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 5px;
+    z-index: 2;
+    white-space: nowrap;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.aims-export-menu li:last-child>a {
+    border-bottom: none;
+}
+
+.aims-export-menu li>a>img {
+    border: none;
+}
+
+.aims-export-menu-top-left {
+    top: 0;
+    left: 0;
+}
+
+.aims-export-menu-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.aims-export-menu-top-right {
+    top: 0;
+    right: 0;
+}
+
+.aims-export-menu-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.aims-export-menu li:hover>ul,
+.aims-export-menu li.active>ul {
+    display: block;
+}
+
+.aims-export-menu li:hover>a,
+.aims-export-menu li.active>a {
+    color: #fff;
+    background-color: rgb(119, 119, 119);
+}
+
+.aims-export-menu-top-left li:hover>ul,
+.aims-export-menu-top-left li.active>ul {
+    left: 30px;
+    top: 0;
+}
+
+.aims-export-menu-bottom-left li:hover>ul,
+.aims-export-menu-bottom-left li.active>ul {
+    left: 30px;
+    bottom: 0;
+}
+
+.aims-export-menu-top-right li:hover>ul,
+.aims-export-menu-top-right li.active>ul {
+    top: 0;
+    right: 30px;
+}
+
+.aims-export-menu-bottom-right li:hover>ul,
+.aims-export-menu-bottom-right li.active>ul {
+    bottom: 0;
+    right: 30px;
+}
+
+.aims-export-menu .export-main>a {
+    display: block;
+    overflow: hidden;
+    text-indent: -13333337px;
+    width: 23px;
+    height: 23px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-image: url('assets/img/download.svg');
+    background-color: #fff;
+    background-position: center;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    margin: 0;
+}
+
+.aims-export-menu .export-main:hover,
+.aims-export-menu .export-main.active {
+    padding-bottom: 100px;
+}
+
+.aims-export-menu.aims-export-menu-bottom-left .export-main:hover,
+.aims-export-menu.aims-export-menu-bottom-right .export-main:hover,
+.aims-export-menu.aims-export-menu-bottom-left .export-main.active,
+.aims-export-menu.aims-export-menu-bottom-right .export-main.active {
+    padding-bottom: 0;
+    padding-top: 100px;
+}
+
+.aims-export-menu .export-main:hover>a,
+.aims-export-menu .export-main.active>a {
+    background-image: url('assets/img/download.svg');
+}
+
+.aims-export-menu {
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+}
+
+.aims-export-menu li img {
+    height: 20px;
 }

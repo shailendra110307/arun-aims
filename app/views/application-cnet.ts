@@ -34,8 +34,6 @@ export class ApplicationComponent {
     memoryLineChartData: any;
     isWidget: boolean;
     currentTab: string = 'dashboard';
-     alertIPs: string[];     
-     eventIPs : string[];
     applicationList : ApplicationInfo[];
     initialApplicationlist : ApplicationInfo[];
     applicationNAMEs: string[];
@@ -58,17 +56,13 @@ export class ApplicationComponent {
     totalPages: number;
     itemsPerPage: number;
     
+    ip: string;
     eventList: EventSummary[];
     filterEvent: EventSummary = new EventSummary();
-    filterEventApp: EventSummary = new EventSummary();
-    filterEventServer: EventSummary = new EventSummary();
     totalEvents: number;
+
     alertList: AlertSummary[];
     filterAlert: AlertSummary = new AlertSummary();
-    filterServer: AlertSummary = new AlertSummary();
-    filterApplication: AlertSummary = new AlertSummary();    
-    alertsServer: AlertSummary[];
-    alertsApplication: AlertSummary[];
     alertsStatus: string;
     totalAlerts: number;
     totalWarning: number = 0;
@@ -101,78 +95,90 @@ export class ApplicationComponent {
         { "d3Curve": d3.curveCatmullRom, "curveTitle": "curveCatmullRom" }
     ];
     public areaOptions: any = {
-        'backgroundColor': '#fff',
-        'textSize': "12px",
-        'textColor': '#000',
-        'isLegend': true,
-        'legendPosition': 'right',
-        'isZoom': true,
-        'xAxisLabel': '',
-        'yAxisLabel': '',
-        'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)",
-         "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ",
-          "#b9783f ", "#b93e3d ", "#913167 "]),
-        'duration': 1000,
-        'curve': this.curveArray[4].d3Curve
+         'backgroundColor': '#fff',
+    'textSize': "14px",
+    'textColor':'#000',
+    'isLegend': true,
+    // 'legendPosition': 'right',//left | right 
+    'isZoom': true,
+    'xAxisLabel': 'xAxisLabel',
+    'yAxisLabel': 'yAxisLabel',
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 1000,
+    'curve': this.curveArray[4].d3Curve,
+    // 'axisMarginForNumbers':50
     };
 
     public barOptions: any = {
         'backgroundColor': '#fff',
-        'textSize': "12px",
-        'textColor': '#000',
-        'isLegend': true,
-        'legendPosition': 'right',
-        'isZoom': true,
-        'xAxisLabel': '',
-        'yAxisLabel': '',
-        'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)",
-         "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ",
-          "#b9783f ", "#b93e3d ", "#913167 "]),
-        'duration': 1000,
-        'curve': this.curveArray[4].d3Curve
+    'textSize': "12px",
+    'textColor':'#000',
+    'isLegend': true,
+    // 'legendPosition': 'left',//left | right 
+    'isZoom': true,
+    'xAxisLabel': 'Date',
+    'yAxisLabel': 'Value',
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 1000,
+    // 'axisMarginForNumbers':50
     };
 
+public lineOptions2:any = { 
+    'backgroundColor': '#fff',//Text font inside the charts
+    'textSize': "12px",
+    'textColor':'#000',
+    'isLegend': true,
+    // 'legendPosition': 'right',//left | right 
+    'isZoom': true,
+    'xAxisLabel': 'Date',
+    'yAxisLabel': 'Value',
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 1000,
+    'curve': this.curveArray[0].d3Curve,
+    // 'axisMarginForNumbers':50
+  };
     public lineOptions: any = {
         'backgroundColor': '#fff',//Text font inside the charts
-        'textSize': "12px",
-        'textColor': '#000',
-        'isLegend': true,
-        'legendPosition': 'right',
-        'isZoom': true,
-        'xAxisLabel': '',
-        'yAxisLabel': '',
-        'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)",
-         "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", 
-         "#b9783f ", "#b93e3d ", "#913167 "]),//example ["red", "#555"]
-        'duration': 1000,
-        'curve': this.curveArray[0].d3Curve
+    'textSize': "12px",
+    'textColor':'#000',
+    'isLegend': true,
+    // 'legendPosition': 'left',//left | right 
+    'isZoom': true,
+    'xAxisLabel': 'Date',
+    'yAxisLabel': 'Value',
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 1000,
+    'curve': this.curveArray[0].d3Curve,
+    // 'axisMarginForNumbers':50
     };
 
     public pieOptions: any = {
         'backgroundColor': '#fff',
-        'textSize': "14px",
-        'textColor': '#000',
-        "padAngle": 0,//small
-        "cornerRadius": 0,
-        'isLegend': true,
-        'legendPosition': 'right',//left | right
-        'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", 
-        "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", 
-        "#b9783f ", "#b93e3d ", "#913167 "]),
-        'duration': 1000
+    'textSize': "14px",
+    'textColor':'#000',
+    "padAngle": 0,//small
+    "cornerRadius": 0,
+    'isLegend': true,
+    // 'legendPosition': 'left',//left | right
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 0,
+    'innerRadiusDivider':5.0,
+    'outerRadiusDivider':2.7,
+    'labelRadiusDivider':2.2
     };
     public pieOptions2: any = {
-        'backgroundColor': '#fff',
-        'textSize': "14px",
-        'textColor': '#000',
-        "padAngle": 0.05,//small
-        "cornerRadius": 10,
-        'isLegend': false,
-        'legendPosition': 'right',//left | right
-        'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)",
-         "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", 
-         "#b9783f ", "#b93e3d ", "#913167 "]),
-        'duration': 1000
+         'backgroundColor': '#fff',
+    'textSize': "14px",
+    'textColor':'#000',
+    "padAngle": 0.05,//small
+    "cornerRadius": 10,
+    'isLegend': false,
+    // 'legendPosition': 'left',//left | right
+    'dataColors': d3.scaleOrdinal().range(["rgba(0,136,191,0.8)", "rgba(152, 179, 74,0.8)", "rgba(246, 187, 66,0.8)", "#cc4748 ", "#cd82ad ", "#2f4074 ", "#448e4d ", "#b7b83f ", "#b9783f ", "#b93e3d ", "#913167 "]),
+    'duration': 1000,
+    'innerRadiusDivider':5.0,
+    'outerRadiusDivider':2.7,
+    'labelRadiusDivider':2.2
     };
 
     constructor(private router: Router, private alertSummaryService: AlertSummaryService, 
@@ -197,6 +203,7 @@ export class ApplicationComponent {
         }
       }
     });
+    this.ip = localStorage.getItem('ip');
   }
 
   onPageChange(newIndex: number) {
@@ -210,54 +217,24 @@ export class ApplicationComponent {
   }
 
   callAlerts() {
-    this.alertSummaryService.getAlertSummary().subscribe(
-      data => {
-        this.pageIndex = 1;
-        this.alertList = this.getAlertList(data["alerts"][0]);
-      },
-      () => console.log('Finished')
-    );
-  }
-  
-  callEvents(){
-    this.eventSummaryService.getEventSummary().subscribe(
-      data=>{
-        this.pageIndex =1;
-        this.eventList = this.getEventList(data);        
-      },
-      ()=> console.log('Finished')
-    );
-  }
-
-  getEventList(data: any[]): any[] {
-        let eventsFiltered:any[] = [];        
-        let eventIP = localStorage.getItem('eventIP');
-        for(let i=0; i<data.length; i++){
-            if(data[i].ip_address == eventIP){
-                eventsFiltered.push(data[i]);
-            }
-        }
-        this.totalEvents = eventsFiltered.length;
-        return eventsFiltered;
+        this.alertSummaryService.getServerAlertSummary().subscribe(
+            data => {
+                this.alertList = this.getAlertList(data["servers"]["nodes"]);
+            },
+            () => console.log('Finished')
+        );
     }
   
   getAlertList(data: any[]): any[] {
         let alerts:any[] = [];
-        let alertsServer:any[] = [];
-        let alertsApplication:any[] = [];
         
-        for(let i=0; i < data["server"].length; i++){
-            alerts.push(data["server"][i]);
-            alertsServer.push(data["server"][i]);
+        for(let i=0; i < data.length; i++){
+            if(data[i].properties.ip_address == this.ip){
+              alerts = data[i].properties.alerts;
+            }
         }
-        for(let j=0; j < data["application"].length; j++){
-            alerts.push(data["application"][j]);
-            alertsApplication.push(data["application"][j]);
-        }        
-        
-        let length:number = alerts.length;
-        
-        for(let i=0; i<length; i++){
+
+        for(let i=0; i < alerts.length; i++){            
             if(alerts[i].severity === "Warning"){
                 this.totalWarning++;
             }
@@ -268,12 +245,34 @@ export class ApplicationComponent {
                 this.totalCritical++;
             }
         }
-        this.totalAlerts = alerts.length;
-        this.alertsServer = alertsServer;
-        this.alertsApplication = alertsApplication;
         
+        this.totalAlerts = alerts.length;
+
         return alerts;
     }
+
+    callEvents(){
+      this.eventSummaryService.getServerEventSummary().subscribe(
+        data=>{
+          this.eventList = this.getEventList(data["servers"]["nodes"]);
+        },
+        ()=> console.log('Finished')
+      );
+    }
+
+  getEventList(data: any[]): any[] {
+        let events:any[] = [];
+        
+        for(let i=0; i < data.length; i++){
+            if(data[i].properties.ip_address == this.ip){
+              events = data[i].properties.events;
+            }
+        }
+        
+        this.totalEvents = events.length;
+
+        return events;
+  }
     
   callApplications() {
     this.applicationInfoService.getApplicationInfo().subscribe(
@@ -369,6 +368,7 @@ callDiskutilitiess() {
             this.getAllData();
         }
     }
+
     getAllData() {
         this.datasetService.getServiceData();
         // this.datasetService.updatePieDataset();

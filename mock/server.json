@@ -1,0 +1,191 @@
+{  
+   "overall":"Networkrah",
+   "servers":{  
+      "nodes":[  
+         {  
+            "id":"64fcdaec-edc9-4559-8a9f-71709b829cf7",
+            "type":"compute:nova",
+            "properties":{  
+               "ip_address":"192.168.20.89",
+               "mac_address":"fa:16:3e:02:70:59",
+               "imageSrc":"assets/img/1.png",
+               "imageSize":50,
+               "circleColor":"red",
+               "serverinfo":{  
+                  "OS":"CentOS",
+                  "memory":"2GB"
+               },
+               "alerts":[  
+                  {  
+                     "message":"CPU iowait time increase: 10.84 % ",
+                     "severity":"Warning",
+                     "reportingtime":"05 Jun 2017 12:38:20 GMT"
+                  },
+                  {  
+                     "message":"CPU iowait time increase: 15.84 % ",
+                     "severity":"Warning",
+                     "reportingtime":"05 Jun 2017 12:38:20 GMT"
+                  },
+                  {  
+                     "message":"CPU iowait time increase: 15.94 % ",
+                     "severity":"Warning",
+                     "reportingtime":"05 Jun 2017 12:38:20 GMT"
+                  },
+                  {  
+                     "message":"CPU iowait time increase: 20.84 % ",
+                     "severity":"Warning",
+                     "reportingtime":"09 Jun 2017 06:14:28 GMT"
+                  },
+                  {  
+                     "message":"CPU iowait time increase: 15.88 %",
+                     "severity":"High",
+                     "reportingtime":"02 Jun 2017 13:40:18 GMT"
+                  },
+                  {  
+                     "message":"Mysql stopped",
+                     "severity":"Critical",
+                     "reportingtime":"07 Jun 2017 16:14:08 GMT"
+                  }
+               ],
+               "events":[  
+                  {  
+                     "message":"User added:oratest",
+                     "eventtype":"server",
+                     "reportingtime":"01 Jun 2017 10:42:28 GMT"
+                  },
+                  {  
+                     "message":"User added:test",
+                     "reportingtime":"20 Jun 2017 06:04:28 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"Server restarted",
+                     "reportingtime":"01 May 2017 12:04:20 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"MySQL updated",
+                     "reportingtime":"09 Jun 2017 16:24:28 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT",
+                     "eventtype":"server"
+                  }
+               ]
+            }
+         },
+         {  
+            "id":"64fcdaec-edc9-4559-8a9f-71709b829cf7",
+            "type":"compute:nova",
+            "properties":{  
+               "ip_address":"192.168.20.137",
+               "mac_address":"fa:16:3e:02:70:5c",
+               "imageSrc":"assets/img/1.png",
+               "imageSize":50,
+               "circleColor":"red",
+               "alerts":[  
+                  {  
+                     "message":"CPU iowait time increase: 20.84 % ",
+                     "severity":"Warning",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT"
+                  },
+                  {  
+                     "message":"CPU iowait time increase: 20.84 % ",
+                     "severity":"Warning",
+                     "reportingtime":"02 May 2017 15:23:20 GMT"
+                  }
+               ],
+               "events":[  
+                  {  
+                     "message":"User added:oratest",
+                     "eventtype":"null",
+                     "reportingtime":"01 Jun 2017 16:44:28 GMT"
+                  },
+                  {  
+                     "message":"Server added for monitoring",
+                     "eventtype":"null",
+                     "reportingtime":"06 Jun 2017 14:44:28 GMT"
+                  },
+                  {  
+                     "message":"User added:oratest",
+                     "eventtype":"null",
+                     "reportingtime":"08 Jun 2017 16:44:28 GMT"
+                  }
+               ]
+            }
+         },
+         {  
+            "id":"64fcdaec-edc9-4559-8a9f-71709b829cf7",
+            "type":"compute:nova",
+            "properties":{  
+               "ip_address":"192.168.20.208",
+               "mac_address":"fb:16:3e:02:70:57",
+               "imageSrc":"assets/img/1.png",
+               "imageSize":50,
+               "circleColor":"red",
+               "alerts":[  
+                  {  
+                     "message":"User added:oratest",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"Server restarted",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"MySQL updated",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  }
+               ],
+               "events":[  
+                  {  
+                     "message":"User added:oratest",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"Server restarted",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"MySQL updated",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  },
+                  {  
+                     "message":"New service cluster created",
+                     "time":"16 May 2017 05:58:54 GMT",
+                     "eventtype":"server"
+                  }
+               ]
+            }
+         }
+      ]
+   }
+}
